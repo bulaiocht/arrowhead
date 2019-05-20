@@ -1,2 +1,3 @@
 rootProject.name = 'arrowhead'
+include 'examples'
 
