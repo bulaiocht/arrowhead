@@ -1,4 +1,4 @@
-package main.java.HomeTasks.HomeTaskSecond;
+package HomeTasks.HomeTaskSecond;
 
 public class WhenNumberWillFit {
     public static void main(String[] args) {

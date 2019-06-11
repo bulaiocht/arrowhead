@@ -1,16 +1,16 @@
-package main.java.HomeTasks.HomeTaskSecond;
+package HomeTasks.HomeTaskSecond;
 
 
 
 public class LongShortNumber {
     public static void main(String[] args) {
         System.out.println("HomeTask1");
-        LongShortNumber(args);
+        longShortNumber(args);
         System.out.println("");
 
 
     }
-    private static void LongShortNumber(String[] args){
+    private static void longShortNumber(String[] args){
         int length ;
         String[] s0= args[0].split("");
         length= s0.length;
