@@ -1,4 +1,4 @@
-package main.java.HomeTasks.HomeTaskSecond;
+package HomeTasks.HomeTaskSecond;
 
 public class Palindrome {
     public static void main(String[] args) {

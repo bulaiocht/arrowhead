@@ -1,4 +1,4 @@
-package main.java.HomeTasks.HomeTaskFirst;
+package HomeTasks.HomeTaskFirst;
 
 import java.util.Arrays;
 
