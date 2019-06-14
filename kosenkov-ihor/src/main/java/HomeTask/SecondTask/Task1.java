@@ -2,6 +2,7 @@ package HomeTask.SecondTask;
 
 public class Task1 {
     public static void main(String[] args) {
+
         String shortestNumber = args[0];
         String longestNumber = args[0];
         for (int i = 1; i < args.length; i++) {
