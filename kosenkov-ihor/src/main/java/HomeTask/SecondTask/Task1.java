@@ -14,5 +14,6 @@ public class Task1 {
         }
         System.out.println("Shortest number is "+shortestNumber+" with length: "+shortestNumber.length());
         System.out.println("Longest number is "+longestNumber+" with length: "+longestNumber.length());
+
     }
 }
