@@ -10,13 +10,14 @@ public class InitExceptionRunner {
     private static String line;
 
     private static Object o;
+
     static {
         System.out.println("Static initializer");
 //        VAR = NUMBER / ZERO;
     }
 
     public static void main(String[] args) {
-        Optional<Object> optional=Optional.of(InitExceptionRunner.o);
+        Optional<Object> optional = Optional.of(InitExceptionRunner.o);
 
         boolean present = optional.isPresent();
 
@@ -28,7 +29,7 @@ public class InitExceptionRunner {
 
         Optional<Object> optional1 = optional.filter(obj -> obj.equals(o));
 
-        Optional.of(line).isPresent(l-> System.out.println(l.toLowerCase()));
+        Optional.of(line).ifPresent(l -> System.out.println(l.toLowerCase()));
 
         boolean b = Objects.nonNull(line);
 
