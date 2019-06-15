@@ -1,4 +1,4 @@
-package home_work.lesson_1;
+package home_work.num_1;
 
 public class Number_5 {
     /**
