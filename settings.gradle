@@ -1,4 +1,10 @@
 rootProject.name = 'arrowhead'
 include 'examples'
 include 'artemenko-dima'
-
+include 'maksym_bykov'
+include 'bozhok-roman'
+include 'kosenkov-ihor'
+include 'anton-fedorov'
+include 'shloma-dima'
+include 'smolenkov-sergey'
+include 'yevhen-khominich'
