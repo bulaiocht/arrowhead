@@ -10,12 +10,19 @@ public class CircleWithCoordinates extends Circle {
         this.center = new Point();
         this.color = "red";
     }
+    public CircleWithCoordinates(Point center){
+        this.radius = 1.0;
+        this.center = center;
+        this.color = "red";
+    }
     public CircleWithCoordinates(Point center,double radius){
+        super(radius);
         this.radius = radius;
         this.center = center;
         this.color = "red";
     }
     public CircleWithCoordinates(Point center, double radius, String color){
+        super(radius,color);
         this.center = center;
         this.radius = radius;
         this.color = color;
@@ -53,6 +60,8 @@ public class CircleWithCoordinates extends Circle {
     public double getPerimeter() {
         return super.getPerimeter();
     }
+
+
 
     @Override
     public double getArea() {

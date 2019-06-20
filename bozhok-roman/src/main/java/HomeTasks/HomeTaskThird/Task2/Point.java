@@ -30,6 +30,14 @@ public class Point {
         this.y = y;
     }
 
+    @Override
+    public String toString() {
+        return "Point{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
+
     public double distance (double x, double y){
         return Math.sqrt(Math.pow(y-this.y,2)+Math.pow(x-this.x,2));
     }
