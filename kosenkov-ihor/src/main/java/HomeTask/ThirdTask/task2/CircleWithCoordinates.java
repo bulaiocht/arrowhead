@@ -27,12 +27,12 @@ public class CircleWithCoordinates extends Circle {
 
     @Override
     public double getPerimeter() {
-        return super.getPerimeter();
+        return 2*Math.PI*radius;
     }
 
     @Override
     public double getArea() {
-        return super.getArea();
+        return Math.PI*radius*radius;
     }
 
     @Override

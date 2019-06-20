@@ -9,6 +9,9 @@ public class Main {
             circleWithCoordinates[i] = new CircleWithCoordinates(new Point(50-i*5,50-i*5));
         }
         search(circleWithCoordinates);
+
+         CircleWithCoordinates cwc = new CircleWithCoordinates(new Point(20,20), 8.0);
+        System.out.println(cwc.getPerimeter());
     }
 
     public static void search(CircleWithCoordinates[] arr){
