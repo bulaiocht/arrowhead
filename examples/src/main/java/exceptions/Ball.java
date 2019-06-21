@@ -1,4 +1,7 @@
 package exceptions;
 
-public class Ball {
+import java.io.IOException;
+
+public class Ball extends IOException {
+
 }
