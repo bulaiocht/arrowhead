@@ -54,5 +54,12 @@ public class TriangleWithCoordinates extends Triangle {
         return distance;
     }
 
-
+    @Override
+    public String toString() {
+        return "TriangleWithCoordinates{" +
+                "pointOne=" + pointOne +
+                ", pointTwo=" + pointTwo +
+                ", pointThree=" + pointThree +
+                '}';
+    }
 }
