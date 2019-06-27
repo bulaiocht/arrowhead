@@ -10,8 +10,16 @@ public class Main {
         }
         search(circleWithCoordinates);
 
-         CircleWithCoordinates cwc = new CircleWithCoordinates(new Point(20,20), 8.0);
+        CircleWithCoordinates cwc = new CircleWithCoordinates(new Point(20,20), 8.0);
         System.out.println(cwc.getPerimeter());
+
+        TriangleWithCoordinates triangle1 = new TriangleWithCoordinates(new Point(0,0),new Point(1,1)
+                ,new Point(2,2));
+
+        TriangleWithCoordinates triangle2 = new TriangleWithCoordinates(new Point(8,0),new Point(8,1)
+                ,new Point(8,2));
+
+        System.out.println(triangle1.distance(triangle2));
     }
 
     public static void search(CircleWithCoordinates[] arr){
