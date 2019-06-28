@@ -1,4 +1,5 @@
 .gradle
 .idea
+.test
 build
 */out
