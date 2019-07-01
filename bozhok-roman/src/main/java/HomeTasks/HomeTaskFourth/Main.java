@@ -52,8 +52,8 @@ public class Main {
 
         StringBuilder builder = new StringBuilder();
 
-        Pattern pattern = Pattern.compile("((([1-9][0-9])(\\s)(\\d{3})(\\s)(\\d{3}))|" +
-                "(([1][0-4][0-9])(\\s)(\\d{3})(\\s)(\\d{3}))|(150 000 000))");
+        Pattern pattern = Pattern.compile("\\b((([1-9][0-9])(\\s)(\\d{3})(\\s)(\\d{3}))|" +
+                "(([1][0-4][0-9])(\\s)(\\d{3})(\\s)(\\d{3}))|(150 000 000))\\b");
 
         Matcher matcher = pattern.matcher(text);
 
