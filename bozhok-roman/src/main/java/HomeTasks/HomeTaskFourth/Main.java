@@ -25,7 +25,7 @@ public class Main {
 
         StringBuilder builder = new StringBuilder();
 
-        Pattern pattern = Pattern.compile("((^[a-z]{4}\\b)|(\\b[a-z]{4}\\b))", Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile("\\b([a-z]{4})\\b", Pattern.CASE_INSENSITIVE);
 
         Matcher matcher = pattern.matcher(text);
 
@@ -52,7 +52,7 @@ public class Main {
 
         StringBuilder builder = new StringBuilder();
 
-        Pattern pattern = Pattern.compile("((([^\\d][1-9][0-9])(\\s)(\\d{3})(\\s)(\\d{3}))|" +
+        Pattern pattern = Pattern.compile("((([1-9][0-9])(\\s)(\\d{3})(\\s)(\\d{3}))|" +
                 "(([1][0-4][0-9])(\\s)(\\d{3})(\\s)(\\d{3}))|(150 000 000))");
 
         Matcher matcher = pattern.matcher(text);
