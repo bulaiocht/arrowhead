@@ -1,4 +1,4 @@
-package HomeTasks;
+package HomeTasks.HomeTask1;
 
 public class HomeTask1e8 {
 //    8. Создать класс, который принимает число с плавающей точкой,

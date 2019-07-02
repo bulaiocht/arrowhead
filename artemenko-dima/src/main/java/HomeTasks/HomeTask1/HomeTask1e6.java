@@ -1,4 +1,4 @@
-package HomeTasks;
+package HomeTasks.HomeTask1;
 
 public class HomeTask1e6 {
 //    6. Cконвертировать число переданное как аргумент командной строки

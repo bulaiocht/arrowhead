@@ -1,4 +1,4 @@
-package HomeTasks;
+package HomeTasks.HomeTask1;
 
 public class HomeTask1e2 {
 //    2. Найти число, в котором число различных цифр минимально.

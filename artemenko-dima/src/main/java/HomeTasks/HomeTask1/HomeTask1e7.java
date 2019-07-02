@@ -1,4 +1,4 @@
-package HomeTasks;
+package HomeTasks.HomeTask1;
 
 public class HomeTask1e7 {
 //    7.  Найти корни квадратного уравнения. Параметры уравнения передавать как аргументы командной строки.

@@ -1,4 +1,4 @@
-package HomeTasks;
+package HomeTasks.HomeTask1;
 
 public class HomeTask1e1 {
 //    1. Найти самое короткое и самое длинное число. Вывести найденные числа и их длину.

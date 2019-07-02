@@ -1,4 +1,4 @@
-package HomeTasks;
+package HomeTasks.HomeTask1;
 
 public class HomeTask1e4 {
 //    4. Определить является ли введенное число палиндромом: его значение

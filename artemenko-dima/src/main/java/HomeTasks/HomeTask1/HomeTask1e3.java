@@ -1,4 +1,4 @@
-package HomeTasks;
+package HomeTasks.HomeTask1;
 
 public class HomeTask1e3 {
     //    3. Найти количество чисел, содержащих только четные цифры,
