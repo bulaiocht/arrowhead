@@ -4,25 +4,7 @@ import java.util.Arrays;
 
 public class Task2 {
     public static void main(String[] args) {
-//        //параметр по которому сравниваем цифры
-//        char token;
-//        //соответствие каждой цифре количество повторений
-//        int[] count;
-//        //перебор чисел в масиве
-//        for (int i = 0; i < args.length; i++) {
-//            count = new int[args[i].length()];
-//            //перебор цифр которые мы сравниваем
-//            for (int j = 0; j < args[i].length(); j++) {
-//                token = args[i].charAt(j);
-//                //срвниваем с каждой цифрой даного числа
-//                for (int k = 0; k < args[i].length(); k++) {
-//                    if (args[i].charAt(k) == token){
-//                        count[j]++;
-//                    }
-//                }
-//            }
-//
-//        }
+
         //массив со значениями количсетва уникальных цифр каждого числа
         int[] countOfUnicNumber = new int[args.length];
         //перебор чисел во входящем масиве
@@ -52,10 +34,8 @@ public class Task2 {
                     count++;
                 }
             }
-//            System.out.println(Arrays.toString(numbers));
             countOfUnicNumber[i] = count;
         }
-//        System.out.println(Arrays.toString(countOfUnicNumber));
         //определить у какого числа меньше всех уникальных цифр
         int minCountOfUnicNumber = countOfUnicNumber[0];
         int indexOfMinCountUnicNumber = 0;
