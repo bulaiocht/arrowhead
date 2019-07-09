@@ -33,11 +33,13 @@ public class Word {
 
     public static void searchFourLetterWord(String text) {
         StringJoiner result = new StringJoiner(", ", "All 4-letter's words : ", "");
+
         Pattern regex = Pattern.compile("\\b[a-z]{4}\\b");
         Matcher matcher = regex.matcher(text);
 
         while (matcher.find()) {
             result.add(matcher.group());
+
         }
 
         System.out.println(result);
