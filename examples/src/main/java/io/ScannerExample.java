@@ -18,12 +18,13 @@ public class ScannerExample {
                          = new BufferedOutputStream(new FileOutputStream("song_copy.txt"))){
 
                 Scanner scanner = new Scanner(is);
-                scanner.useDelimiter(Pattern.compile("\\s"));
+//                scanner.useDelimiter(Pattern.compile("\\s"));
 
                 while (scanner.hasNext()) {
-                    String line = scanner.next();
+                    String line = scanner.nextLine();
                     System.out.println(line);
                     os.write(line.getBytes());
+                    os.write("\n".getBytes());
                 }
 
                 os.flush();
