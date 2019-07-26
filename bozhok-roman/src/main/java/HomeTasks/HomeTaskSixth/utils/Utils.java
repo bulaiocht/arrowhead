@@ -1,29 +1,30 @@
 package HomeTasks.HomeTaskSixth.utils;
 
-import HomeTasks.HomeTaskSixth.abstractClasses.Polygon;
+
 import HomeTasks.HomeTaskSixth.classes.Point;
 import HomeTasks.HomeTaskSixth.classes.PolygonWithCoordinates;
 import HomeTasks.HomeTaskSixth.interfaces.PointMarker;
 import HomeTasks.HomeTaskThird.Task2.CircleWithCoordinates;
-import HomeTasks.HomeTaskThird.Task2.Shape;
+
 import HomeTasks.HomeTaskThird.Task2.TriangleWithCoordinates;
 
 import java.util.*;
-import java.util.function.Predicate;
+
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Utils {
     /**
      a.) параметризованный метод, который будет принимать
      коллекцию фигур и находить N ближайших из них и возвращать их в виде коллекии.
 **/
-    public static List<List<? extends PointMarker> > find(List<? extends PointMarker >collection ,
+    public static List<List<? extends PointMarker> > find(List<? extends PointMarker>collection ,
                                                     int n ){
         List<List<? extends PointMarker>> collect  = new ArrayList<>();
         Map<Double,List<?extends PointMarker>> mapShapes = new HashMap<>();
-        for (int i = 0; i <collection.size()-1 ; i++) {
+        for (int i = 0; i <collection.size() ; i++) {
             PointMarker shape1 = collection.get(i);
-            for (int j = 1; j <collection.size()-1 ; j++) {
+            for (int j = 1; j <collection.size() ; j++) {
                 PointMarker shape2 = collection.get(j);
                 List<PointMarker> list  = new ArrayList<>();
                 list.add(shape1);
@@ -48,8 +49,8 @@ public class Utils {
                         list);
                 }else {
                     double minDistance = 0;
-                for (int k = 0; k < shape1.countPoint()-1; k++) {
-                    for (int l = 0; l < shape2.countPoint()-1 ; l++) {
+                for (int k = 0; k < shape1.countPoint(); k++) {
+                    for (int l = 0; l < shape2.countPoint() ; l++) {
                         if (minDistance>shape1.getListPoint().get(k).distance(shape2.getListPoint().get(l))){
                             minDistance=shape1.getListPoint().get(k).distance(shape2.getListPoint().get(l));
 
@@ -72,7 +73,7 @@ public class Utils {
             Double aDouble = doubles.stream().min(Double::compareTo).orElse(0.0);
             collect.add(mapShapes.get(aDouble));
             mapShapes.remove(aDouble);
-
+            doubles.remove(aDouble);
         }
 
 
@@ -89,9 +90,9 @@ public class Utils {
                                                          int n){
         List<List<? extends PointMarker>> collect  = new ArrayList<>();
         Map<Double,List<?extends PointMarker>> mapShapes = new HashMap<>();
-        for (int i = 0; i <collection1.size()-1 ; i++) {
+        for (int i = 0; i <collection1.size() ; i++) {
             PointMarker shape1 = collection1.get(i);
-            for (int j = 0; j <collection2.size()-1 ; j++) {
+            for (int j = 0; j <collection2.size() ; j++) {
                 PointMarker shape2 = collection2.get(j);
                 List<PointMarker> list  = new ArrayList<>();
                 list.add(shape1);
@@ -116,8 +117,8 @@ public class Utils {
                             list);
                 }else {
                     double minDistance = 0;
-                    for (int k = 0; k < shape1.countPoint()-1; k++) {
-                        for (int l = 0; l < shape2.countPoint()-1 ; l++) {
+                    for (int k = 0; k < shape1.countPoint(); k++) {
+                        for (int l = 0; l < shape2.countPoint() ; l++) {
                             if (minDistance>shape1.getListPoint().get(k).distance(shape2.getListPoint().get(l))){
                                 minDistance=shape1.getListPoint().get(k).distance(shape2.getListPoint().get(l));
 
@@ -140,7 +141,7 @@ public class Utils {
             Double aDouble = doubleSet.stream().min(Double::compareTo).orElse(0.0);
             collect.add(mapShapes.get(aDouble));
             mapShapes.remove(aDouble);
-
+            doubleSet.remove(aDouble);
         }
 
 
@@ -171,12 +172,22 @@ public class Utils {
         if (shape1 instanceof CircleWithCoordinates || shape2 instanceof CircleWithCoordinates)throw new IllegalArgumentException("asd");
         List<Point> listPoint1 = shape1.getListPoint();
         List<Point> listPoint2 = shape2.getListPoint();
-        for (int i = 0; i < listPoint1.size()-1; i++) {
+        for (int i = 0; i < listPoint1.size(); i++) {
             Point point1 = listPoint1.get(i);
-            Point point2 = listPoint1.get(i++);
-            for (int j = 0; j < listPoint2.size()-1; j++) {
+            Point point2;
+            if(i==listPoint1.size()-1){
+                point2 = listPoint1.get(0);
+            }else {
+                point2 = listPoint1.get(i++);
+            }
+            for (int j = 0; j < listPoint2.size(); j++) {
                 Point point3 = listPoint2.get(j);
-                Point point4 = listPoint2.get(j++);
+                Point point4;
+                if(i==listPoint1.size()-1){
+                    point4 = listPoint2.get(0);
+                }else {
+                    point4 = listPoint2.get(j++);
+                }
                 if (point1.getX()>=point2.getX()){
                     double tmp1 = point1.getX();
                     double tmp2 = point1.getY();
@@ -218,6 +229,14 @@ public class Utils {
 
         }
         return false;
+    }
+
+    public static List<Point> generatorPoint (int n){
+        return Stream.generate(Point::new)
+                .peek(point ->{ point.setX(Math.random()*10);
+                        point.setY(Math.random()*10);})
+                .limit(n)
+                .collect(Collectors.toList());
     }
 
 

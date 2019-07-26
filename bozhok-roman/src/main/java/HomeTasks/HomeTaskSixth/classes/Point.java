@@ -1,6 +1,8 @@
 package HomeTasks.HomeTaskSixth.classes;
 
-public class Point {
+import java.util.function.Supplier;
+
+public class Point  {
     private double x;
     private double y;
 

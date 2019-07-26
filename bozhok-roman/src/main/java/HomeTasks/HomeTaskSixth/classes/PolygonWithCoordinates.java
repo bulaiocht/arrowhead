@@ -37,6 +37,13 @@ public class PolygonWithCoordinates extends Polygon implements Shape , PointMark
         return points.size();
     }
 
+    @Override
+    public String toString() {
+        return "PolygonWithCoordinates{" +
+                "points=" + points +
+                '}';
+    }
+
     public double distance (PolygonWithCoordinates otherPolygon){
 
         List<Double> distances = new ArrayList<>();

@@ -13,31 +13,40 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Point> points = new ArrayList<>();
+        List<Point> pointsTrg = Utils.generatorPoint(3);
+        List<Point> pointsTrg1 =Utils.generatorPoint(3);
+        List<Point> points1 = Utils.generatorPoint((int)(Math.random()*10));
+        List<Point> points2 = Utils.generatorPoint((int)(Math.random()*10));
+        List<Point> points3 = Utils.generatorPoint((int)(Math.random()*10));
 
         List<PointMarker> shapes1 = new ArrayList<>();
 
         shapes1.add(new CircleWithCoordinates());
-        shapes1.add(new PolygonWithCoordinates(points));
-        shapes1.add(new TriangleWithCoordinates(points));
+        shapes1.add(new PolygonWithCoordinates(points2));
+        shapes1.add(new TriangleWithCoordinates(pointsTrg1));
 
         List<PointMarker> shapes2 = new ArrayList<>();
 
-        shapes2.add(new CircleWithCoordinates());
-        shapes2.add(new PolygonWithCoordinates(points));
-        shapes2.add(new TriangleWithCoordinates(points));
+        shapes2.add(new CircleWithCoordinates(new Point(1.0,2.0)));
+        shapes2.add(new PolygonWithCoordinates(points1));
+        shapes2.add(new TriangleWithCoordinates(pointsTrg));
 
-        PolygonWithCoordinates polygon1 = new PolygonWithCoordinates(points);
-        PolygonWithCoordinates polygon2 = new PolygonWithCoordinates(points);
+        PolygonWithCoordinates polygon1 = new PolygonWithCoordinates(pointsTrg);
+        PolygonWithCoordinates polygon2 = new PolygonWithCoordinates(points3);
 
 
-        List<List<? extends PointMarker>> lists1 = Utils.find(shapes1, 3);
+        List<List<? extends PointMarker>> lists1 = Utils.find(shapes1, 2);
 
-        List<List<? extends PointMarker>> lists2 = Utils.find(shapes1, shapes2, 3);
+        List<List<? extends PointMarker>> lists2 = Utils.find(shapes1, shapes2, 2);
 
         List<? extends PointMarker> withPredicate = Utils.findWithPredicate(shapes1, 3);
 
         boolean cross = Utils.isCross(polygon1, polygon2);
+        System.out.println("Test:");
+        System.out.println(lists1);
+        System.out.println(lists2);
+        System.out.println(withPredicate);
+        System.out.println(cross);
 
 
     }
