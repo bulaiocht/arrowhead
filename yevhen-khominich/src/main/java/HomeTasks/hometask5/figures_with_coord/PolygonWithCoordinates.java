@@ -11,7 +11,7 @@ import java.util.List;
 public class PolygonWithCoordinates extends Polygon implements FigureWithCoord {
 
     private int NUMBER_OF_ANGELS;
-    private List<Point> points;
+    private List<Point> points = new ArrayList<>();
 
     public PolygonWithCoordinates(List<Point> points, int NUMBER_OF_ANGELS) {
         this.NUMBER_OF_ANGELS = NUMBER_OF_ANGELS;

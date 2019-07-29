@@ -10,7 +10,6 @@ import HomeTasks.hometask5.utils.Util;
 import java.util.*;
 
 public class Main {
-
     public static void main(String[] args) {
 
         Point point[]={new Point(5,1),new Point(0,1),new Point(8,8)};
