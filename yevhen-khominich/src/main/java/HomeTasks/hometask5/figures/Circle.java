@@ -1,24 +1,16 @@
-package shapes;
+package HomeTasks.hometask5.figures;
 
+import HomeTasks.hometask5.abstracts.Shape;
 
-public class Circle extends shapes.Shape {
+public class Circle extends Shape {
+
     private double radius = 1.0;
-    private String color = "red";
 
     public Circle() {
     }
 
     public Circle(double radius) {
         this.radius = radius;
-    }
-
-    public Circle(double radius, String color) {
-        this.radius = radius;
-        this.color = color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public void setRadius(double radius) {
@@ -44,9 +36,7 @@ public class Circle extends shapes.Shape {
     }
 
     @Override
-    public String getColor() {
-        return this.color;
+    public String toString() {
+        return "I'm circle";
     }
-
-
 }
