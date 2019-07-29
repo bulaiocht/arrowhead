@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class Identificator {
     public static void main(String[] args) {
         String text = "200 333 568 show me 150 000 000 inters " +
-                "111 453 313  en 99 99 99 whe 10 055 321 lol 401 01 sub " +
+                "111 453 313  en 99 99 99 whe 10 055 321 faf 401 01 sub " +
                 "11 304 982 no 39 683 234 p 139 920 393 153 049 011 f " +
                 "133 394 111 3 394 234 wow 139 909 982 45 042 033 "+
                 "99 011 099 ru224 414 34";
