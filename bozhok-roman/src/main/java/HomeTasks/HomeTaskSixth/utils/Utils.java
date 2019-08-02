@@ -10,6 +10,7 @@ import HomeTasks.HomeTaskThird.Task2.TriangleWithCoordinates;
 
 import java.util.*;
 
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -18,10 +19,10 @@ public class Utils {
      a.) параметризованный метод, который будет принимать
      коллекцию фигур и находить N ближайших из них и возвращать их в виде коллекии.
 **/
-    public static List<List<? extends PointMarker> > find(List<? extends PointMarker>collection ,
+    public static List<List<? super PointMarker> > find(List<? extends PointMarker>collection ,
                                                     int n ){
-        List<List<? extends PointMarker>> collect  = new ArrayList<>();
-        Map<Double,List<?extends PointMarker>> mapShapes = new HashMap<>();
+        List<List<? super PointMarker>> collect  = new ArrayList<>();
+        Map<Double,List<?super PointMarker>> mapShapes = new HashMap<>();
         for (int i = 0; i <collection.size() ; i++) {
             PointMarker shape1 = collection.get(i);
             for (int j = 1; j <collection.size() ; j++) {
@@ -85,11 +86,11 @@ public class Utils {
      b.) параметризованный метод, который будет принимать
      2 коллекции фигур и находить N ближайших из них и возвращать их в виде коллекии.
 **/
-    public static List<List<? extends PointMarker> > find(List<? extends PointMarker >collection1,
+    public static List<List<? super PointMarker> > find(List<? extends PointMarker >collection1,
                                                          List<? extends PointMarker >collection2,
                                                          int n){
-        List<List<? extends PointMarker>> collect  = new ArrayList<>();
-        Map<Double,List<?extends PointMarker>> mapShapes = new HashMap<>();
+        List<List<? super PointMarker>> collect  = new ArrayList<>();
+        Map<Double,List<?super PointMarker>> mapShapes = new HashMap<>();
         for (int i = 0; i <collection1.size() ; i++) {
             PointMarker shape1 = collection1.get(i);
             for (int j = 0; j <collection2.size() ; j++) {
@@ -153,13 +154,17 @@ public class Utils {
      c.) параметризованный метод, который будет принимать коллекцию фигур и предикат
      и возвращать коллекцию фигур отвечающих требованиям предиката.
 **/
-    public static List<? extends PointMarker > findWithPredicate(List<? extends PointMarker >collection ,
-                                                          int countPoint ){
+    public static List<? super PointMarker > findWithPredicate(List<? extends PointMarker >collection ,
+                                                                 Predicate<? super PointMarker> predicate){
 
 
-        List<? extends PointMarker> collect = collection.stream()
-                .filter((s) -> s.countPoint() == countPoint)
-                .collect(Collectors.toList());
+        List<? super PointMarker> collect = new ArrayList<>();
+
+        for (PointMarker pointMarker : collection) {
+            if (predicate.test(pointMarker)){
+                collect.add(pointMarker);
+            }
+        }
 
         return collect;
     }

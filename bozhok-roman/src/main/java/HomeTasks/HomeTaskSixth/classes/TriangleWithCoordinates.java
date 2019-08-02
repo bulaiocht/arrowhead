@@ -8,6 +8,7 @@ import HomeTasks.HomeTaskSixth.interfaces.Shape;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Set;
 
 public class TriangleWithCoordinates extends Triangle implements Shape , PointMarker {
     private List<Point> points;
@@ -21,11 +22,13 @@ public class TriangleWithCoordinates extends Triangle implements Shape , PointMa
         points.add( new Point(x1,y1));
         points.add( new Point(x2,y2));
         points.add( new Point(x3,y3));
+        test(points);
         this.points = points;
     }
 
     public TriangleWithCoordinates(List<Point> points){
         super(points.get(0).distance(points.get(1)),points.get(1).distance(points.get(2)),points.get(2).distance(points.get(0)));
+        test(points);
         this.points = points;
 
     }
@@ -52,6 +55,12 @@ public class TriangleWithCoordinates extends Triangle implements Shape , PointMa
     @Override
     public double getArea() {
         return super.getArea();
+    }
+
+    private static void test (List<Point> pointList){
+        Set<Point> pointList1 = (Set<Point>) pointList;
+        if (pointList1.size()!=3)
+            throw new IllegalArgumentException("bad point");
     }
 
     public double distance (TriangleWithCoordinates otherTriangle){

@@ -10,6 +10,7 @@ import HomeTasks.HomeTaskSixth.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -35,11 +36,18 @@ public class Main {
         PolygonWithCoordinates polygon2 = new PolygonWithCoordinates(points3);
 
 
-        List<List<? extends PointMarker>> lists1 = Utils.find(shapes1, 2);
+        List<List<? super PointMarker>> lists1 = Utils.find(shapes1, 2);
 
-        List<List<? extends PointMarker>> lists2 = Utils.find(shapes1, shapes2, 2);
+        List<List<? super PointMarker>> lists2 = Utils.find(shapes1, shapes2, 2);
 
-        List<? extends PointMarker> withPredicate = Utils.findWithPredicate(shapes1, 3);
+        List<? super PointMarker> withPredicate = Utils.findWithPredicate(shapes1, new Predicate<PointMarker>() {
+            @Override
+            public boolean test(PointMarker pointMarker) {
+                if (pointMarker.countPoint()==3)
+                    return true;
+                return false;
+            }
+        });
 
         boolean cross = Utils.isCross(polygon1, polygon2);
         System.out.println("Test:");
