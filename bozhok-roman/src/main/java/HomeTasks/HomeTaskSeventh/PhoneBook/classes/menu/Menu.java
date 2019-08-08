@@ -1,5 +1,7 @@
 package HomeTasks.HomeTaskSeventh.PhoneBook.classes.menu;
 
+import HomeTasks.HomeTaskSeventh.PhoneBook.enums.menu.OptionsMenu;
+
 import java.util.Scanner;
 
 public class Menu {

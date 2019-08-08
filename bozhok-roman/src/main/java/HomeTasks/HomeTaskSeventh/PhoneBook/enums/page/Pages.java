@@ -1,4 +1,4 @@
-package HomeTasks.HomeTaskSeventh.PhoneBook.enums;
+package HomeTasks.HomeTaskSeventh.PhoneBook.enums.page;
 
 
 import HomeTasks.HomeTaskSeventh.PhoneBook.classes.contacts.Contact;

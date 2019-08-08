@@ -1,6 +1,7 @@
 package HomeTasks.HomeTaskSeventh.PhoneBook.classes.contacts;
 
-import HomeTasks.HomeTaskSeventh.PhoneBook.classes.readerConfig.Properties;
+
+import HomeTasks.HomeTaskSeventh.PhoneBook.classes.readerConfig.PropertiesLoader;
 
 import java.util.Objects;
 
@@ -13,8 +14,8 @@ public class Contact {
 
     public Contact(String NAME, String NUMBER) {
 
-        Pattern pattern1 = Pattern.compile(Properties.REGEXNAME);
-        Pattern pattern2 = Pattern.compile(Properties.REGEXNUMBER);
+        Pattern pattern1 = Pattern.compile(PropertiesLoader.REGEXNAME);
+        Pattern pattern2 = Pattern.compile(PropertiesLoader.REGEXNUMBER);
         Matcher m1 = pattern1.matcher(NAME);
         Matcher m2 = pattern2.matcher(NUMBER);
         boolean b = m1.find();

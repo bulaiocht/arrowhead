@@ -1,21 +1,24 @@
 package HomeTasks.HomeTaskSeventh.PhoneBook.classes.utils;
 
 import HomeTasks.HomeTaskSeventh.PhoneBook.classes.contacts.Contact;
-import HomeTasks.HomeTaskSeventh.PhoneBook.classes.readerConfig.Properties;
-import HomeTasks.HomeTaskSeventh.PhoneBook.enums.Pages;
-import sun.font.DelegatingShape;
+
+import HomeTasks.HomeTaskSeventh.PhoneBook.classes.email.Email;
+import HomeTasks.HomeTaskSeventh.PhoneBook.classes.readerConfig.PropertiesLoader;
+import HomeTasks.HomeTaskSeventh.PhoneBook.enums.page.Pages;
 
 
+
+import javax.mail.MessagingException;
 import java.io.*;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+
 
 public class Utils {
 
     public static void saveOnFile (){
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(Properties.PATHPHONEBOOK))){
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(PropertiesLoader.PATHPHONEBOOK))){
             List<Pages> pages = Arrays.asList(Pages.values());
             for (Pages page : pages) {
                 bufferedWriter.write(page.name());
@@ -39,7 +42,7 @@ public class Utils {
     }
     public static void getWithFile (){
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Properties.PATHPHONEBOOK))){
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(PropertiesLoader.PATHPHONEBOOK))){
             List<Pages> pages = Arrays.asList(Pages.values());
             String line = bufferedReader.readLine();
             for (Pages page : pages) {
@@ -95,17 +98,19 @@ public class Utils {
         }
     }
     public static void sendEmail(String email){
-        Pattern pattern1 = Pattern.compile(Properties.REGEXEMAIL);
+        Pattern pattern1 = Pattern.compile(PropertiesLoader.REGEXEMAIL);
         Matcher m1 = pattern1.matcher(email);
         boolean b = m1.find();
         try {
             if (m1.group().length()!=email.length())
                 throw new IllegalArgumentException("Invalid");
+            Email.sendEmail(email);
 
         }catch (IllegalStateException e){
             throw new IllegalArgumentException("Invalid");
+        } catch (MessagingException e) {
+            e.printStackTrace();
         }
-
 
 
     }

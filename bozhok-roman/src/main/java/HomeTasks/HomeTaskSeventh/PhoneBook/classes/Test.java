@@ -1,14 +1,18 @@
 package HomeTasks.HomeTaskSeventh.PhoneBook.classes;
 
 
+import HomeTasks.HomeTaskSeventh.PhoneBook.classes.email.Email;
 
-import HomeTasks.HomeTaskSeventh.PhoneBook.classes.contacts.Contact;
-
+import javax.mail.MessagingException;
 
 
 public class Test {
     public static void main(String[] args) {
-        Contact contact = new Contact("Roma","+380665121511");
+        try {
+            Email.sendEmail("ntcb10@mail.ru");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
 
     }
 }

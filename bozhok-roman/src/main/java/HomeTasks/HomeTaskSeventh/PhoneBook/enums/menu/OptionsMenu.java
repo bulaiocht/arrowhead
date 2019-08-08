@@ -1,4 +1,4 @@
-package HomeTasks.HomeTaskSeventh.PhoneBook.classes.menu;
+package HomeTasks.HomeTaskSeventh.PhoneBook.enums.menu;
 
 import HomeTasks.HomeTaskSeventh.PhoneBook.classes.utils.Utils;
 
