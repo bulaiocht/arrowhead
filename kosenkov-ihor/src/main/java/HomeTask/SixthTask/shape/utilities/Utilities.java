@@ -1,6 +1,7 @@
 package HomeTask.SixthTask.shape.utilities;
 
 import HomeTask.SixthTask.shape.classes.Point;
+import HomeTask.SixthTask.shape.classes.TriangleWithCoordinates;
 import HomeTask.SixthTask.shape.interfaces.ShapeWithCoordinates;
 
 import java.util.*;
@@ -23,7 +24,7 @@ public class Utilities {
 //        Arrays.sort(distances, (Comparator.comparingDouble(doubles -> doubles[1])));
 
         // Сортируем дистанции и сами фигуры чтобы потом перебором нужное количество раз возвращали нужное кол-во фигур
-        bubbleSort(distances, (List<ShapeWithCoordinates>) shapes);
+        bubbleSort(distances, shapes);
 
         // Кладем в результирующий массив нужное количество фигур
         // Если количество нужных нам фигур меньше всех фигур, то выводим все отсортированные фигуры
@@ -76,14 +77,14 @@ public class Utilities {
         return false;
     }
 
-    private static void bubbleSort(double[][] arr, List<ShapeWithCoordinates> shapes) {
+    private static <T extends ShapeWithCoordinates>void bubbleSort(double[][] arr, List<T> shapes) {
         for (int i = 0; i < arr.length-1; i++){
             for (int j = i+1; j < arr.length; j++){
                 if (arr[i][1] > arr[j][1]) {
                     double[] t = arr[i];                         //========================================
                     arr[i] = arr[j];                             // Делаем сортировку массива с дистанциями
                     arr[j] = t;                                  //========================================
-                    ShapeWithCoordinates tswc = shapes.get(i);   //========================================
+                    T tswc = shapes.get(i);   //========================================
                     shapes.set(i, shapes.get(j));                // Сортируем сами фигуры по дистанции
                     shapes.set(j, tswc);                         //========================================
                 }
