@@ -1,8 +1,7 @@
 package HomeTasks.hometask5.utils;
 
 import HomeTasks.hometask5.interfaces.FigureWithCoord;
-
-import java.util.AbstractMap;
+import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +52,7 @@ public class Util {
 
     //  b) параметризованный метод, который будет принимать
     //   2 коллекции фигур и находить N ближайших из них и возвращать их в виде коллекии.
+
 
     public static <T extends FigureWithCoord> List<Pair<T, T>> searchNearFigures(int n, List<T> figures1, List<T> figures2) {
         SortedMap<Double, Pair<T, T>> map = new TreeMap<>();
