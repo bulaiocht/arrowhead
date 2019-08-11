@@ -10,6 +10,7 @@ import HomeTasks.HomeTaskSeventh.PhoneBook.enums.page.Pages;
 
 import javax.mail.MessagingException;
 import java.io.*;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,9 +21,9 @@ public class Utils {
     public static void saveOnFile (){
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(PropertiesLoader.PATHPHONEBOOK))){
             List<Pages> pages = Arrays.asList(Pages.values());
+            bufferedWriter.write("NAME"+","+"NUMBER");
+            bufferedWriter.newLine();
             for (Pages page : pages) {
-                bufferedWriter.write(page.name());
-                bufferedWriter.newLine();
                 Iterator<Contact> iterator = page.getContacts().iterator();
                 while (iterator.hasNext()){
                     Contact contact = iterator.next();
@@ -43,36 +44,34 @@ public class Utils {
     public static void getWithFile (){
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(PropertiesLoader.PATHPHONEBOOK))){
-            List<Pages> pages = Arrays.asList(Pages.values());
-            String line = bufferedReader.readLine();
-            for (Pages page : pages) {
-
-                    if (page.name().equals(line)) {
+            if (bufferedReader.readLine().equals("NAME"+","+"NUMBER")){
                         while (true) {
-                            line = bufferedReader.readLine();
+                            String line = bufferedReader.readLine();
 
                             if (line== null)break;
-                            if (line.length() != 1 ) {
+
 
                                 String[] contact = line.split(",");
                                 if (contact.length > 2)
                                     throw new IllegalArgumentException("invalid in file");
-                                page.addContact(new Contact(contact[0], contact[1]));
-                            } else {
-                                break;
-                            }
+                                addOnPage(contact[0],contact[1]);
+
 
                         }
-                    }
+            }else throw new FileAlreadyExistsException("NO PHONE BOOK!");
 
-                }
+
 
 
         }catch (IOException e){
             e.printStackTrace();
-        }}
+        }
+    }
 
-
+    private static void addOnPage (String name,String number){
+        Pages pages = Pages.valueOf(name.substring(0,1));
+        pages.addContact(new Contact(name,number));
+    }
     public static void addNewContact (String name,String number){
         Pages pages = Pages.valueOf(name.substring(0,1));
         pages.addContact(new Contact(name,number));
@@ -98,7 +97,8 @@ public class Utils {
         }
     }
     public static void sendEmail(String email){
-        Pattern pattern1 = Pattern.compile(PropertiesLoader.REGEXEMAIL);
+        getWithFile();
+        Pattern pattern1 = Pattern.compile(PropertiesLoader.REGEXEMAIL,Pattern.CASE_INSENSITIVE);
         Matcher m1 = pattern1.matcher(email);
         boolean b = m1.find();
         try {
@@ -109,6 +109,8 @@ public class Utils {
         }catch (IllegalStateException e){
             throw new IllegalArgumentException("Invalid");
         } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

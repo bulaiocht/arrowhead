@@ -3,7 +3,7 @@ package HomeTasks.HomeTaskSeventh.PhoneBook.classes.readerConfig;
 import java.io.*;
 import java.util.Properties;
 
-public class PropertiesLoader {
+public abstract class PropertiesLoader {
     private static final Properties PATHCONFIG = loader();
     public static final String REGEXNAME = PATHCONFIG.getProperty("REGEXNAME");
     public static final String REGEXNUMBER = PATHCONFIG.getProperty("REGEXNUMBER");

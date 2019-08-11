@@ -15,24 +15,26 @@ import java.util.Properties;
 
 
 public class Email {
-    private static final Properties EMAILCONFIG = loader();
+  private static final Properties EMAILCONFIG = loader();
 
 
-    private static Properties loader (){
+  private static Properties loader (){
         try {
+
+            Properties properties = new Properties();
             FileInputStream in = new FileInputStream(
                     String.format("bozhok-roman" +
                                     "%ssrc" +
                                     "%smain" +
                                     "%sresources" +
                                     "%sconfigurationPhoneBook" +
-                                    "%EmailConfig.properties",
+                                    "%sEmailConfig.properties",
                             File.separator,
                             File.separator,
                             File.separator,
                             File.separator,
                             File.separator));
-            Properties properties = new Properties();
+
             properties.load(in);
             return properties;
         } catch (IOException e) {
@@ -40,10 +42,11 @@ public class Email {
         }
     }
 
-    public static void sendEmail(String email) throws MessagingException {
+    public static void sendEmail(String email) throws MessagingException, IOException {
+
         Session mailSession = Session.getDefaultInstance(EMAILCONFIG);
         MimeMessage message = new MimeMessage(mailSession);
-        message.setFrom(new InternetAddress("myemail"));
+        message.setFrom(new InternetAddress("hillel138"));
         message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));
         message.setSubject("PhoneBook");
 
