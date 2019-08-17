@@ -1,4 +1,4 @@
-package HomeTasks.phonebook.exceptions;
+package exceptions;
 
 public class IllegalNumberException extends Exception {
 
