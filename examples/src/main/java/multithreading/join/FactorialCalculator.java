@@ -8,8 +8,6 @@ public class FactorialCalculator extends Thread {
 
     private BigInteger factorial;
 
-    private boolean finished;
-
     public FactorialCalculator(long num) {
         if (num < 0) {
             throw new IllegalArgumentException("Illegal argument: " + num + ". Must be positive number.");
@@ -24,6 +22,12 @@ public class FactorialCalculator extends Thread {
         BigInteger tmp = number;
 
         while (!isInterrupted()) {
+//            try {
+//                sleep(500);
+//            } catch (InterruptedException e) {
+//                System.out.println(getName() + " has been interrupted.");
+//                return BigInteger.ZERO;
+//            }
             if (BigInteger.ZERO.equals(tmp) || BigInteger.ONE.equals(tmp)) {
                 return result;
             }

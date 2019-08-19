@@ -4,6 +4,7 @@ public class Container {
 
     private int number;
     private int limit;
+    private final Object lock = new Object();
 
     public Container(int limit) {
         if (limit < 0)
@@ -12,47 +13,50 @@ public class Container {
         this.limit = limit;
     }
 
-    public synchronized void increase() {
+    public void increase() {
 
-        while (number >= limit) {
-            try {
-                System.out.println(Thread.currentThread().getName() + ": waiting...");
-                notifyAll();
-                wait();
-            } catch (InterruptedException e) {
-                System.out.println(Thread.currentThread().getName() + ": I've been interrupted");
-                break;
+        synchronized (lock) {
+            while (number >= limit) {
+                try {
+                    System.out.println(Thread.currentThread().getName() + ": waiting...");
+                    lock.wait();
+                } catch (InterruptedException e) {
+                    System.out.println(Thread.currentThread().getName() + ": I've been interrupted");
+                    return;
+                }
             }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                return;
+            }
+            number++;
+            System.out.println(Thread.currentThread().getName() + ": " + number);
+            lock.notifyAll();
         }
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            return;
-        }
-        number++;
-        System.out.println(Thread.currentThread().getName() + ": " + number);
 
     }
 
-    public synchronized void reduce() {
-
-        while (number <= 0) {
-            try {
-                System.out.println(Thread.currentThread().getName() + ": waiting...");
-                notifyAll();
-                wait();
-            } catch (InterruptedException e) {
-                System.out.println(Thread.currentThread().getName() + ": I've been interrupted");
-                break;
+    public void reduce() {
+        synchronized (lock) {
+            while (number <= 0) {
+                try {
+                    System.out.println(Thread.currentThread().getName() + ": waiting...");
+                    lock.wait();
+                } catch (InterruptedException e) {
+                    System.out.println(Thread.currentThread().getName() + ": I've been interrupted");
+                    return;
+                }
             }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                return;
+            }
+            number--;
+            System.out.println(Thread.currentThread().getName() + ": " + number);
+            lock.notifyAll();
         }
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            return;
-        }
-        number--;
-        System.out.println(Thread.currentThread().getName() + ": " + number);
 
     }
 
