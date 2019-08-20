@@ -3,6 +3,10 @@ package homework.lesson2;
 import java.util.Scanner;
 
 public class task4 {
+
+//    4. Определить является ли введенное число палиндромом:
+//    его значение задом наперед будет таким же (например: 131, 17155171, 12121)
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner (System.in);

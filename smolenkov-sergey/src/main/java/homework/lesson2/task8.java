@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class task8 {
 
+//    8. Создать класс, который принимает число с плавающей точкой,
+//    введенное пользователем в консоль, и выводит его в виде целого числа и экспоненты.
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);

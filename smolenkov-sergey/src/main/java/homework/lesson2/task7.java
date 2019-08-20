@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class task7 {
 
+//    7.  Найти корни квадратного уравнения. Параметры уравнения передавать как аргументы командной строки.
+
     public static void main(String[] args) {
 
         double a, b, c;

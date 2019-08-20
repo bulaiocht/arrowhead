@@ -12,7 +12,7 @@ public class RegexFindID {
                 "234 678 848, 2346777776, 5678";
 
         Pattern sentence = Pattern.compile("(1[0-4]\\d\\s\\d{3}\\s\\d{3})|(\\D[1-9]\\d\\s\\d{3}\\s\\d{3})|" +
-                "(150\\s\\d{3}\\s\\d{3})");
+                "(150\\s[0]{3}\\s[0]{3})");
         Matcher matcher = sentence.matcher(text);
 
         while (matcher.find()){
