@@ -12,7 +12,7 @@ public class Menu {
             for (OptionsMenu value : values) {
                 System.out.println(value);
             }
-            try {
+
                 System.out.println("ENTER OPTIONS:");
                 Scanner scanner = new Scanner(System.in);
                 int option = scanner.nextInt();
@@ -22,9 +22,7 @@ public class Menu {
                     }
                 }
 
-            }catch (IndexOutOfBoundsException e){
-                break;
-            }
+
         }
     }
 }

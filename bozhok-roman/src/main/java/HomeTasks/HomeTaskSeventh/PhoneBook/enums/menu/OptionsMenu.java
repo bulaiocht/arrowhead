@@ -64,8 +64,7 @@ public enum OptionsMenu {
     ,EXIT(0,"EXIT"){
         @Override
         public void options(){
-            int [] i = new int[1];
-            i[10]=0;
+            System.exit(1);
         }
     };
 
