@@ -1,7 +1,7 @@
-package classes.views;
+package HomeTasks.phonebook.classes.views;
 
-import classes.configs.PhoneBookConfig;
-import classes.controllers.Controller;
+import HomeTasks.phonebook.classes.configs.PhoneBookConfig;
+import HomeTasks.phonebook.classes.controllers.Controller;
 
 public class ConsoleView {
 

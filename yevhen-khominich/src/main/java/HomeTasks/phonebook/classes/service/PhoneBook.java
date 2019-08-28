@@ -1,4 +1,4 @@
-package classes.service;
+package HomeTasks.phonebook.classes.service;
 
 import classes.configs.PhoneBookConfig;
 

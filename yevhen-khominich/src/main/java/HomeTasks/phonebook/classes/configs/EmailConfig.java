@@ -1,4 +1,4 @@
-package classes.configs;
+package HomeTasks.phonebook.classes.configs;
 
 import java.io.File;
 import java.util.Properties;

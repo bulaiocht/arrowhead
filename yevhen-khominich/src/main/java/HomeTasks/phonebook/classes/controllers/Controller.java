@@ -1,4 +1,4 @@
-package classes.controllers;
+package HomeTasks.phonebook.classes.controllers;
 
 import classes.configs.EmailConfig;
 import classes.configs.PhoneBookConfig;

@@ -1,10 +1,8 @@
-package HomeTasks.phonebook.classes.service;
+package HomeTasks.phonebook.classes;
 
-import classes.views.ConsoleView;
+import HomeTasks.phonebook.classes.views.ConsoleView;
 
 public class Main {
-    //static HashMap<String, String> contacts = new HashMap<>();
-
     public static void main(String[] args) {
         ConsoleView.start();
     }
