@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package HomeTasks.phonebook.classes.service;
+=======
+package classes.service;
+>>>>>>> yevhen-khominich
 
 import classes.configs.PhoneBookConfig;
 

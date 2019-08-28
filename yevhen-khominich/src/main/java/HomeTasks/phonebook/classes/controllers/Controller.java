@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package HomeTasks.phonebook.classes.controllers;
+=======
+package classes.controllers;
+>>>>>>> yevhen-khominich
 
 import classes.configs.EmailConfig;
 import classes.configs.PhoneBookConfig;

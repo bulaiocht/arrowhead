@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 package HomeTasks.phonebook.classes.service;
 
 import HomeTasks.phonebook.classes.configs.EmailConfig;
 import HomeTasks.phonebook.classes.configs.PhoneBookConfig;
+=======
+package classes.service;
+
+import classes.configs.EmailConfig;
+import classes.configs.PhoneBookConfig;
+
+>>>>>>> yevhen-khominich
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
