@@ -1,6 +1,8 @@
 package HomeTasks.HomeTask7.TestClass;
 
-final public class TestClass extends testParentClass implements testInterface2 {
+import HomeTasks.HomeTask7.OwnAnnotation;
+
+final public class TestClass extends testParentClass implements TestInterface2 {
 
     private int int2 = 2;
     protected int int3 = 3;
@@ -23,23 +25,36 @@ final public class TestClass extends testParentClass implements testInterface2 {
         super( str1 );
     }
 
+    @OwnAnnotation
     @Override
     public void method1() {
         super.method1();
+        for (int a = 0; a<1000000 ; a++){
+
+        }
+        System.out.println("method1 done");
     }
 
     public static void method3(){
     }
 
+    @OwnAnnotation
     private static void method4(){
+
+        System.out.println("method4 done");
     }
 
     protected int method5(){
         return 0;
     }
 
+    @OwnAnnotation
     @Override
     public double method2() {
+        for (int a = 0; a<1000000 ; a++){
+            int4 += Math.pow( int4, a);
+        }
+        System.out.println("method2 done");
         return 0;
     }
 

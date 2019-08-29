@@ -1,6 +1,6 @@
 package HomeTasks.HomeTask7.TestClass;
 
-public interface testInterface1 {
+public interface TestInterface1 {
 
     void method1();
 }

@@ -1,6 +1,6 @@
 package HomeTasks.HomeTask7.TestClass;
 
-public class testParentClass implements testInterface1{
+public class testParentClass implements TestInterface1 {
 
     final int int1 = 1;
     private String str1 = "str1";

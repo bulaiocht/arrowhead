@@ -9,6 +9,9 @@ package HomeTasks.HomeTask7;
 //- экземпляр класса
 //- прокси объекта класса
 
+import HomeTasks.HomeTask7.TestClass.TestClass;
+import HomeTasks.HomeTask7.TestClass.TestInterface2;
+
 import java.lang.reflect.*;
 
 
@@ -74,8 +77,13 @@ public class UtilClassReflection {
 
 
         System.out.println( "====================\n" +
-                "Proxy class object:" );
-        proxyClassObject(classTest);
+                "Proxy class object:\n" );
+
+        TestClass obj = new TestClass(  );
+        TestInterface2 proxyObj = (TestInterface2) Proxy.newProxyInstance( TestClass.class.getClassLoader(),
+                new Class[] {TestInterface2.class},
+                new LoggingInvocationHandler( obj ));
+        System.out.println( proxyObj.method2() );
     }
 
     private static String getModifiers(int m) {
@@ -95,29 +103,37 @@ public class UtilClassReflection {
         System.out.println( test.toString() );
     }
 
+    private static class LoggingInvocationHandler implements InvocationHandler {
 
+        private Object target;
 
-    private static <T> void proxyClassObject(Class classTest) {
-
-        SampleInvocationHandler obj = new SampleInvocationHandler( classTest );
-        T proxyObj = (T) Proxy.newProxyInstance(
-                classTest.getClassLoader(),
-                classTest.getInterfaces(),
-                new SampleInvocationHandler( obj ));
-
-        System.out.println( proxyObj.toString() );
-
-    }
-
-    public static class SampleInvocationHandler  implements InvocationHandler{
-        private Object obj;
-        public  SampleInvocationHandler(Object obj) {
-            this.obj = obj;
+        LoggingInvocationHandler(Object target) {
+            this.target = target;
         }
 
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            return null;
+
+            Class<?> aClass = target.getClass();
+            Method[] declaredMethods = aClass.getDeclaredMethods();
+            Object value = null;
+
+            for (Method declaredMethod : declaredMethods) {
+                if (declaredMethod.isAnnotationPresent( OwnAnnotation.class )){
+
+                    System.out.println( "Method name: " +declaredMethod.getName() );
+
+                    long startTime = System.currentTimeMillis();
+                    value = declaredMethod.invoke(target, args);
+                    long endTime = System.currentTimeMillis();
+                    System.out.println("Total execution time: " + (endTime-startTime) + "ms");
+                    System.out.println("- - - - - - - - - -");
+
+                }
+
+            }
+            System.out.println("Proxy finished it's work.");
+            return value;
         }
     }
 }
