@@ -1,4 +1,4 @@
-package HomeTasks.HomeTask7.TestClass;
+package HomeTasks.HomeTask7.ClassExample;
 
 public class testParentClass implements TestInterface1 {
 

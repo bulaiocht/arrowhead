@@ -1,4 +1,4 @@
-package HomeTasks.HomeTask7.TestClass;
+package HomeTasks.HomeTask7.ClassExample;
 
 import HomeTasks.HomeTask7.OwnAnnotation;
 
@@ -60,7 +60,7 @@ final public class TestClass extends testParentClass implements TestInterface2 {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder( "TestClass{" );
+        final StringBuilder sb = new StringBuilder( "ClassExample{" );
         sb.append( "int2=" ).append( int2 );
         sb.append( ", int3=" ).append( int3 );
         sb.append( ", int4=" ).append( int4 );

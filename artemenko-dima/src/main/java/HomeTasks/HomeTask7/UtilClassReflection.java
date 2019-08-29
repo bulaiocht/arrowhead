@@ -9,8 +9,11 @@ package HomeTasks.HomeTask7;
 //- экземпляр класса
 //- прокси объекта класса
 
-import HomeTasks.HomeTask7.TestClass.TestClass;
-import HomeTasks.HomeTask7.TestClass.TestInterface2;
+
+
+
+import HomeTasks.HomeTask7.ClassExample.TestClass;
+import HomeTasks.HomeTask7.ClassExample.TestInterface2;
 
 import java.lang.reflect.*;
 
@@ -18,7 +21,7 @@ import java.lang.reflect.*;
 public class UtilClassReflection {
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 
-        Class classTest = Class.forName( "HomeTask7.TestClass.TestClass" );
+        Class classTest = Class.forName( "HomeTasks.HomeTask7.ClassExample.TestClass" );
 
         System.out.println( "Class access modifiers:" );
         System.out.println( getModifiers( classTest.getModifiers() ) );
@@ -79,7 +82,9 @@ public class UtilClassReflection {
         System.out.println( "====================\n" +
                 "Proxy class object:\n" );
 
+
         TestClass obj = new TestClass(  );
+
         TestInterface2 proxyObj = (TestInterface2) Proxy.newProxyInstance( TestClass.class.getClassLoader(),
                 new Class[] {TestInterface2.class},
                 new LoggingInvocationHandler( obj ));
