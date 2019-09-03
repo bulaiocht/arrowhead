@@ -1,15 +1,14 @@
-<<<<<<< HEAD
-package HomeTasks.phonebook.classes.controllers;
-=======
-package classes.controllers;
->>>>>>> yevhen-khominich
 
-import classes.configs.EmailConfig;
-import classes.configs.PhoneBookConfig;
-import classes.service.Email;
-import classes.service.PhoneBook;
-import exceptions.IllegalMailException;
-import exceptions.IllegalNumberException;
+package HomeTasks.phonebook.classes.controllers;
+
+
+import HomeTasks.phonebook.classes.configs.EmailConfig;
+import HomeTasks.phonebook.classes.configs.PhoneBookConfig;
+import HomeTasks.phonebook.classes.service.Email;
+import HomeTasks.phonebook.classes.service.PhoneBook;
+import HomeTasks.phonebook.exceptions.IllegalMailException;
+import HomeTasks.phonebook.exceptions.IllegalNumberException;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

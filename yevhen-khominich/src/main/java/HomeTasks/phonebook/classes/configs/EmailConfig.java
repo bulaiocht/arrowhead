@@ -1,8 +1,6 @@
-<<<<<<< HEAD
+
 package HomeTasks.phonebook.classes.configs;
-=======
-package classes.configs;
->>>>>>> yevhen-khominich
+
 
 import java.io.File;
 import java.util.Properties;
@@ -24,7 +22,6 @@ public class EmailConfig {
 
 
     final public static Properties EMAIL_PROPERTIES = PropertiesLoader.loadProperties(PATH_TO_EMAIL_PROPERTIES);
-
     final public static String USER = EMAIL_PROPERTIES.getProperty("mail.smtp.user");
     final public static String PASS = EMAIL_PROPERTIES.getProperty("mail.smtp.pass");
     final public static String MESSAGE_SUBJECT = EMAIL_PROPERTIES.getProperty("message.subject");

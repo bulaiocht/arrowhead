@@ -1,8 +1,5 @@
-<<<<<<< HEAD
+
 package HomeTasks.phonebook.classes.configs;
-=======
-package classes.configs;
->>>>>>> yevhen-khominich
 
 import java.io.FileInputStream;
 import java.io.IOException;

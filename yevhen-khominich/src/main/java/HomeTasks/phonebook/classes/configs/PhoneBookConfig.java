@@ -1,8 +1,6 @@
-<<<<<<< HEAD
+
 package HomeTasks.phonebook.classes.configs;
-=======
-package classes.configs;
->>>>>>> yevhen-khominich
+
 
 import java.io.File;
 import java.util.Properties;

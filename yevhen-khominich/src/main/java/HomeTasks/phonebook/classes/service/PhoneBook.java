@@ -1,11 +1,8 @@
-<<<<<<< HEAD
+
 package HomeTasks.phonebook.classes.service;
-=======
-package classes.service;
->>>>>>> yevhen-khominich
 
-import classes.configs.PhoneBookConfig;
 
+import HomeTasks.phonebook.classes.configs.PhoneBookConfig;
 import java.io.*;
 import java.util.HashMap;
 
