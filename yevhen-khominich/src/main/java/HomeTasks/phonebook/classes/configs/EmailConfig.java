@@ -4,21 +4,31 @@ package HomeTasks.phonebook.classes.configs;
 
 import java.io.File;
 import java.util.Properties;
+import java.util.Set;
 
 public class EmailConfig {
 
     final private static String PATH_TO_EMAIL_PROPERTIES = String.format
             (
-                            "src" +
+                    "yevhen-khominich" +
+                            "%ssrc" +
                             "%smain" +
                             "%sresources" +
                             "%sproperties" +
                             "%semail.properties",
+
                     File.separator,
                     File.separator,
                     File.separator,
                     File.separator,
                     File.separator);
+
+
+
+
+
+
+
 
 
     final public static Properties EMAIL_PROPERTIES = PropertiesLoader.loadProperties(PATH_TO_EMAIL_PROPERTIES);

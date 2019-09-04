@@ -9,15 +9,19 @@ public class PhoneBookConfig {
 
     final private static String PATH_TO_PHONEBOOK_PROPERTIES = String.format
             (
-                            "src" +
+                    "yevhen-khominich" +
+                            "%ssrc" +
                             "%smain" +
                             "%sresources" +
                             "%sproperties" +
                             "%sphonebook.properties",
+
+                    File.separator,
                     File.separator,
                     File.separator,
                     File.separator,
                     File.separator);
+
 
 
     final public static Properties PHONEBOOK_PROPERTIES = PropertiesLoader.loadProperties(PATH_TO_PHONEBOOK_PROPERTIES);
