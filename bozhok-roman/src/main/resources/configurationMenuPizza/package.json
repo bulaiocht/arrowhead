@@ -1,0 +1,27 @@
+[{
+  "id": 1 ,
+  "price": 10,
+  "time_cooking": 10,
+  "pizza_type": "MEAT",
+  "name": "Franchesko"
+
+
+
+},{
+  "id": 2 ,
+  "price": 7,
+  "time_cooking": 10,
+  "pizza_type": "VEGETARIAN",
+  "name": "Gavaiskaia"
+
+
+
+},{
+  "id": 3 ,
+  "price": 14,
+  "time_cooking": 10,
+  "pizza_type": "VEGETARIAN",
+  "name": "4 Chiza"
+
+
+}]

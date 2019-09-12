@@ -1,4 +1,4 @@
-package HomeTasks.HomeTaskNineth.classes.pizzeria;
+package HomeTasks.HomeTaskNineth.classes.pizzeria.kitchen;
 
 public class ChefThread extends Thread {
 
@@ -12,8 +12,8 @@ public class ChefThread extends Thread {
     @Override
     public void run() {
         try {
-            sleep(pizza.getTIME_COOKING());
-            pizza.setIS_COOKED();
+            sleep(pizza.getTime_cooking()*1000);
+            pizza.setIs_cooked(true);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
