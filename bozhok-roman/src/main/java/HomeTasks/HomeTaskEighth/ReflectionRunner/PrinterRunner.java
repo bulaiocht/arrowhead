@@ -11,7 +11,7 @@ public class PrinterRunner {
 
         Class<?> reflectionPrinter = Class.forName("HomeTasks.HomeTaskEighth.Utils.ReflectionPrinter");
 
-//        ReflectionPrinter.infoAboutSome("HomeTasks.HomeTaskEighth.Utils.ReflectionPrinter");
+        ReflectionPrinter.infoAboutSome("HomeTasks.HomeTaskEighth.Utils.ReflectionPrinter");
 
 //        String[]as = new String[]{"as"};
 //
