@@ -1,9 +1,9 @@
 package HomeTasks.pizzeria.classes.services;
 
+import HomeTasks.pizzeria.classes.DataLoader.IMenu;
+import HomeTasks.pizzeria.classes.DataLoader.JsonLoader;
 import HomeTasks.pizzeria.classes.objects.Order;
 import HomeTasks.pizzeria.classes.objects.Pizza;
-import HomeTasks.pizzeria.classes.configs.PropertiesLoader;
-import HomeTasks.pizzeria.type.PizzaType;
 
 
 import java.util.*;
@@ -14,8 +14,12 @@ public class PizzaService {
     private static List<Pizza> pizzasForMenu;
     private static Map<Integer, Order> orders;
 
+    public PizzaService(){
+
+    }
+
     static {
-        pizzasForMenu = initializeMenu(PropertiesLoader.loadPizzasProperties());
+        pizzasForMenu = initializeMenu(new JsonLoader());
         orders = new ConcurrentHashMap<>();
     }
 
@@ -41,42 +45,17 @@ public class PizzaService {
 
     }
 
-
-//    private static boolean transferOrderToChef(Order order) {
-//
-//        if (orders.size() == 1 || Chef.getCurrentOrder().isReady()) {
-//            System.out.println("Order is accepted");
-//            Chef chef = new Chef();
-//            Chef.setCurrentOrder(order);
-//            chef.start();
-//            return true;
-//        }
-//        return false;
-//
-//    }
-
-    private static void transferOrderToChef(Order order) {
+    public static void transferOrderToChef(Order order) {
 
         Chef chef = new Chef();
         chef.setCurrentOrder(order);
         chef.setChef(chef);
         chef.start();
-
-
     }
-//private static void transferOrdersToChef() {
-//        Chef.setOrders(orders);
-//        Chef.work();
-//    }
-
 
     public static void giveCheck(Order order) {
-        float account = 0;
-        List<Pizza> pizzas = order.getPizzas();
-        for (Pizza pizza : pizzas) {
-            account += pizza.getPrice();
-        }
-        System.out.printf("You need to pay %.2f UAH", DiscountSystem.discountOfLimit(account));
+
+        System.out.printf("You need to pay %.2f UAH", DiscountSystem.moneyToPay(order));
     }
 
     public static void notifyAboutOrder(Order order) {
@@ -103,15 +82,12 @@ public class PizzaService {
             //exit from method
             if (choice == 0) {
                 orders.put(id, order);
-                // Подумать где вызывать, что бы заказы хранились и брались постепенно как только они будут true !
                 PizzaService.transferOrderToChef(order);
                 break;
             }
 
             order.getPizzas().add(addPizzaToOrder(choice));
-
         }
-
     }
 
     private static int inputCorrect() {
@@ -127,27 +103,12 @@ public class PizzaService {
         return choice;
     }
 
-    private static List<Pizza> initializeMenu(List<Properties> propertiesOfPizzas) {
-
-        List<Pizza> pizzasForMenu = new ArrayList<>();
-
-        for (Properties property : propertiesOfPizzas) {
-
-            pizzasForMenu.add(new Pizza(
-                    Integer.parseInt(property.getProperty("id")),
-                    Float.parseFloat(property.getProperty("price")),
-                    Float.parseFloat(property.getProperty("timeOfCooking")),
-                    PizzaType.valueOf(property.getProperty("type")),
-                    property.getProperty("name")));
-        }
-
-        return pizzasForMenu;
+    private static List<Pizza> initializeMenu(IMenu pizzasMenu) {
+        return pizzasMenu.getPizzas();
     }
 
     private static Pizza addPizzaToOrder(int choice) {
-
         return pizzasForMenu.get(choice - 1);
-
     }
 
 }

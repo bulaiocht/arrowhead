@@ -23,14 +23,14 @@ public class SimpleContoller {
 
     private int checkAndCorrectInput() {
         Scanner inNumber = new Scanner(System.in);
-        int var;
+        int choice;
         try {
-            var = inNumber.nextInt();
+            choice = inNumber.nextInt();
 
         } catch (InputMismatchException e) {
-            var = 5;
+            choice = 5;
         }
-        return var;
+        return choice;
     }
 
     private void chooseVar() {

@@ -11,6 +11,9 @@ public class Pizza {
     private String name;
     private boolean isCooked;
 
+    public Pizza(){
+
+    }
 
     public Pizza(int id, float price, float timeOfCooking, PizzaType type, String name) {
         this.id = id;
@@ -20,8 +23,6 @@ public class Pizza {
         this.name = name;
         this.isCooked=false;
     }
-
-
 
     public int getId() {
         return id;

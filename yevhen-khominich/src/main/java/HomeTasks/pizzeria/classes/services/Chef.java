@@ -6,11 +6,7 @@ import HomeTasks.pizzeria.classes.objects.Pizza;
 
 public class Chef extends Thread {
 
-    //Пока выполняется, не может принять другой !
-
-    //  private static int counter = 1;
     private Order currentOrder;
-    //    private static Map<Integer, Order> orders = new HashMap<>();
     private Chef chef;
 
     public void setChef(Chef chef) {
@@ -20,32 +16,11 @@ public class Chef extends Thread {
     public void setCurrentOrder(Order currentOrder) {
         this.currentOrder = currentOrder;
     }
-//
-//    public static void work() {
-//        Chef chef = new Chef();
-//        chef.start();
-//
-//        for (int i = counter; i < orders.size() + 1; i++) {
-//            if (orders.size() == 0 || currentOrder.isReady()) {
-//                setCurrentOrder(orders.get(i));
-//            }
-//        }
-//
-//
-//    }
-
-//    public static void setOrders(Map<Integer, Order> ordersFrom) {
-//        orders = ordersFrom;
-//    }
-
 
     @Override
     public void run() {
-
         // Обработка заказа, готовка, обсчет счета
         processOrder();
-
-
     }
 
     public void processOrder() {

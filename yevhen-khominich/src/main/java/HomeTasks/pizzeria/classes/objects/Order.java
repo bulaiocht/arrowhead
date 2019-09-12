@@ -6,11 +6,15 @@ import java.util.List;
 public class Order {
 
     private int idOfOrder;
-    List<Pizza> pizzas;
     private boolean isReady;
+    private List<Pizza> pizzas;
 
     public int getIdOfOrder() {
         return idOfOrder;
+    }
+
+    public Order(){
+
     }
 
     public Order(int idOfOrder) {
