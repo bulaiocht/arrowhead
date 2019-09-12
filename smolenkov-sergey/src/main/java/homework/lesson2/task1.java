@@ -10,21 +10,21 @@ public class task1 {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter how many numbers you wanna have in massive and press 'Enter' key: ");
-        int sizeOfMassive = sc.nextInt();
-        int massive[] = new int[sizeOfMassive];
-        int numbers[] = new int[sizeOfMassive];
+        System.out.println("Enter how many numbers you wanna have in an array and press 'Enter' key: ");
+        int sizeOfArray = sc.nextInt();
+        int array[] = new int[sizeOfArray];
+        int numbers[] = new int[sizeOfArray];
         System.out.println();
-        System.out.println("Enter " + sizeOfMassive + " numbers using 'Space' key and press Enter: ");
-        for (int i = 0; i < sizeOfMassive; i++) {
-            massive[i] = sc.nextInt();
-            numbers[i] = (massive[i] + "").length();
+        System.out.println("Enter " + sizeOfArray + " numbers using 'Space' key and press Enter: ");
+        for (int i = 0; i < sizeOfArray; i++) {
+            array[i] = sc.nextInt();
+            numbers[i] = (array[i] + "").length();
         }
         sc.close();
-        numbersLength(massive, numbers, sizeOfMassive);
+        numbersLength(array, numbers, sizeOfArray);
     }
 
-    private static void numbersLength(int[] massive, int[] numbers, int sizeOfMassive) {
+    private static void numbersLength(int[] array, int[] numbers, int sizeOfMassive) {
         int max = numbers[0], min = numbers[0], big = 0, small = 0;
         for (int i = 1; i < sizeOfMassive; i++) {
             int j = numbers[i];
@@ -41,8 +41,8 @@ public class task1 {
         System.out.println();
         System.out.println("************");
         System.out.println();
-        System.out.println("The first shortest number is: " + massive[small] + ". " + "with length of: " + min + ";");
-        System.out.println("The first longest number is: " + massive[big] + ". " + "with length of: " + max + ";");
+        System.out.println("The first shortest number is: " + array[small] + ". " + "with length of: " + min + ";");
+        System.out.println("The first longest number is: " + array[big] + ". " + "with length of: " + max + ";");
     }
 
 }

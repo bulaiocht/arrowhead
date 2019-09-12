@@ -150,7 +150,7 @@ public class main {
                 writer.newLine();
 
             }
-            writer.flush();
+            writer.flush(); 
 
         } catch (IOException e) {
             e.printStackTrace();
