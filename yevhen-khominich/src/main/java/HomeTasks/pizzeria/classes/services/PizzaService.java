@@ -37,7 +37,7 @@ public class PizzaService {
 
         if (Optional.empty().equals(order)) {
             System.out.println("Such Order is not exist ! Try again !");
-        } else if (order.get().isReady()) {
+        } else if (!order.get().isReady()) {
             System.out.println("Order is not ready yet");
         } else System.out.println("Order is ready");
 
@@ -45,10 +45,11 @@ public class PizzaService {
 
     public static void transferOrderToChef(Order order) {
 
-        Chef chef = new Chef();
-        chef.setCurrentOrder(order);
-        chef.setChef(chef);
-        chef.start();
+        Chef.addToChef(order);
+//        Chef chef = new Chef();
+//        chef.setCurrentOrder(order);
+//        chef.setChef(chef);
+//        chef.start();
     }
 
     public static void giveCheck(Order order) {

@@ -1,6 +1,7 @@
 package HomeTasks.pizzeria.classes.controllers;
 
 import HomeTasks.pizzeria.classes.services.PizzaService;
+import HomeTasks.pizzeria.classes.services.PizzeriaOpen;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -48,6 +49,7 @@ public class SimpleContoller {
                 PizzaService.checkOrder(checkAndCorrectInput());
                 break;
             case 4:
+                PizzeriaOpen.offPizzeria();
                 mark = false;
                 break;
             default:

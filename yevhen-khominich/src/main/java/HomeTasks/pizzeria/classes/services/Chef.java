@@ -4,29 +4,32 @@ package HomeTasks.pizzeria.classes.services;
 import HomeTasks.pizzeria.classes.objects.Order;
 import HomeTasks.pizzeria.classes.objects.Pizza;
 
-public class Chef extends Thread {
+import java.util.ArrayList;
+import java.util.List;
 
-    private Order currentOrder;
-    private Chef chef;
+import static java.lang.Thread.sleep;
 
-    public void setChef(Chef chef) {
-        this.chef = chef;
+public class Chef {
+
+    private static List<Order> orders;
+
+    public static List<Order> getOrders() {
+        return orders;
     }
 
-    public void setCurrentOrder(Order currentOrder) {
-        this.currentOrder = currentOrder;
+    static {
+        orders = new ArrayList<>();
     }
 
-    @Override
-    public void run() {
-        // Обработка заказа, готовка, обсчет счета
-        processOrder();
+    public static void addToChef(Order order) {
+        orders.add(order);
     }
 
-    public void processOrder() {
+    public static void processOrder(Order currentOrder) {
 
         for (Pizza pizza : currentOrder.getPizzas()) {
-            chef.cook(pizza);
+            Chef.cook(pizza);
+            PizzaService.notifyAboutPizza(pizza,currentOrder);
         }
         currentOrder.setReady(true);
         PizzaService.notifyAboutOrder(currentOrder);
@@ -34,7 +37,7 @@ public class Chef extends Thread {
 
     }
 
-    private void cook(Pizza pizza) {
+    private static void cook(Pizza pizza) {
         for (int i = 0; i < pizza.getTimeOfCooking(); i++) {
             try {
                 sleep(1000);
@@ -43,7 +46,7 @@ public class Chef extends Thread {
             }
         }
         pizza.setCooked(true);
-        PizzaService.notifyAboutPizza(pizza, currentOrder);
+
     }
 
 }
