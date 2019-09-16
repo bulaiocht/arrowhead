@@ -2,8 +2,6 @@ package HomeTasks.pizzeria.classes.views;
 
 import HomeTasks.pizzeria.classes.controllers.SimpleContoller;
 
-import java.sql.SQLOutput;
-
 public class ConsoleView {
 
     static SimpleContoller controller = new SimpleContoller();

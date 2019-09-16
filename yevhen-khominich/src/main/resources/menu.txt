@@ -1,0 +1,43 @@
+[{
+	"id": "1",
+	"price": "85f",
+	"timeOfCooking": "5f",
+	"name": "Margarita",
+	"type": "VEGETARIAN"
+}, {
+	"id": "2",
+	"price": "95f",
+	"timeOfCooking": "7f",
+	"name": "Peperoni",
+	"type": "MEAT"
+}, {
+	"id": "3",
+	"price": "155f",
+	"timeOfCooking": "8f",
+	"name": "Tuna",
+	"type": "MEAT"
+}, {
+	"id": "4",
+	"price": "155f",
+	"timeOfCooking": "9f",
+	"name": "Five Cheeses",
+	"type": "VEGETARIAN"
+}, {
+	"id": "5",
+	"price": "130f",
+	"timeOfCooking": "7f",
+	"name": "With Bacon",
+	"type": "MEAT"
+}, {
+	"id": "6",
+	"price": "155f",
+	"timeOfCooking": "9f",
+	"name": "PapaJohn",
+	"type": "MEAT"
+}, {
+	"id": "7",
+	"price": "155f",
+	"timeOfCooking": "7f",
+	"name": "Carbonara",
+	"type": "MEAT"
+}]

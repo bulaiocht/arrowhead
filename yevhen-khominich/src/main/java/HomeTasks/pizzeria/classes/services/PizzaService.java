@@ -9,12 +9,13 @@ import HomeTasks.pizzeria.classes.objects.Pizza;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+
 public class PizzaService {
 
     private static List<Pizza> pizzasForMenu;
     private static Map<Integer, Order> orders;
 
-    public PizzaService(){
+    public PizzaService() {
 
     }
 
@@ -32,16 +33,13 @@ public class PizzaService {
 
     public static void checkOrder(int idOfOrder) {
 
-        try {
-            if (!orders.get(idOfOrder).isReady()) {
-                System.out.println("Order is not ready yet");
-            } else System.out.println("Order is ready");
-        } catch (NullPointerException e) {
-            if (orders.size() == 0) {
-                System.out.println("No orders yet");
-            } else System.out.println("Such Order is not exist ! Try again !");
-        }
+        Optional<Order> order = Optional.ofNullable(orders.get(idOfOrder));
 
+        if (Optional.empty().equals(order)) {
+            System.out.println("Such Order is not exist ! Try again !");
+        } else if (order.get().isReady()) {
+            System.out.println("Order is not ready yet");
+        } else System.out.println("Order is ready");
 
     }
 

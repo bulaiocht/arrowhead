@@ -3,7 +3,7 @@ package HomeTasks.pizzeria.classes.services;
 
 import HomeTasks.pizzeria.classes.objects.Order;
 import HomeTasks.pizzeria.classes.objects.Pizza;
-import com.sun.org.apache.xpath.internal.operations.Or;
+
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class DiscountSystem {
             account += order.getPizzas().get(i).getPrice();
         }
 
-        return 0;
+        return account;
     }
 
     public static float moneyToPay(Order order) {
