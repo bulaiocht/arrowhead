@@ -93,13 +93,17 @@ public class Services {
     }
 
     public boolean checkOrder(int orderID){
-        if (!chef.isFree()&&chef.getOrders().get(0).getOrderID() > orderID) return true;
+        if (chef.getOrders().isEmpty() && orderID < Order.getCount()) return true;
+        if (!chef.isFree() && chef.getOrders().get(0).getOrderID() > orderID) return true;
+
         Order order = chef.getOrders()
                 .stream()
                 .filter(order1 -> order1.getOrderID() == orderID)
                 .findAny()
                 .orElse(null);
+
         if (order==null) return false;
+
         return order.isReady();
     }
 

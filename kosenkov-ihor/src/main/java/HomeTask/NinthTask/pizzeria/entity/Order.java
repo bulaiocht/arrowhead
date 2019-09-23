@@ -43,6 +43,10 @@ public class Order {
         return ready;
     }
 
+    public static int getCount() {
+        return count;
+    }
+
     public void addPizza(Pizza pizza){
         orderPrice += pizza.getPrice();
         orderCookingTime += pizza.getCookingTime();
