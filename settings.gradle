@@ -1,5 +1,6 @@
 rootProject.name = 'arrowhead'
 include 'examples'
+include 'katya-ts'
 include 'artemenko-dima'
 include 'maksym_bykov'
 include 'bozhok-roman'
