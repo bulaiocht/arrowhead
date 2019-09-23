@@ -7,18 +7,45 @@ import javax.crypto.spec.PSource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Properties;
+import java.util.*;
 
 public class Test {
 
     public static void main(String[] args){
 
-        CsvAccess csvAccess =new CsvAccess();
-        csvAccess.writeLines("ewq,1231");
-//        propertiesExample();
+        Locale[] locales = {
+                Locale.FRENCH,
+                Locale.ENGLISH,
+                Locale.GERMAN
+        };
+        for (int i = 0; i < locales.length; i++) {
+            displayValue(locales[i], "s2");
+        }
 
+        System.out.println();
 
+        iterateKeys(locales[0]);
+
+    }
+
+    private static void displayValue(Locale currentLocale, String key) {
+        ResourceBundle labels = ResourceBundle.getBundle("phonebook", currentLocale);
+
+        String value = labels.getString(key);
+        System.out.println("Locale = " + currentLocale.toString() + ", " +
+                "Key = " + key + ", " +
+                "value = " + value);
+    }
+
+    private static void iterateKeys(Locale currentLocale){
+        ResourceBundle labels = ResourceBundle.getBundle("phonebook", currentLocale);
+        Enumeration bundleKeys = labels.getKeys();
+
+        while (bundleKeys.hasMoreElements()){
+            String key = (String)bundleKeys.nextElement();
+            String value = labels.getString(key);
+            System.out.println("key = " + key + ", value = " + value);
+        }
     }
 
     private static void propertiesExample() {

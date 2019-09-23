@@ -1,0 +1,26 @@
+[{
+  "title": "Мясная",
+  "pizzaType": "MEAT",
+  "price": 199.99,
+  "cookingTime": 15000
+},{
+  "title": "Вегетарианская",
+  "pizzaType": "VEGETARIAN",
+  "price": 149.99,
+  "cookingTime": 10000
+},{
+  "title": "Пепперони",
+  "pizzaType": "MEAT",
+  "price": 129.99,
+  "cookingTime": 8000
+},{
+  "title": "Гавайская",
+  "pizzaType": "MEAT",
+  "price": 149.99,
+  "cookingTime": 12000
+},{
+  "title": "Средеземноморская",
+  "pizzaType": "WITH_SEAFOOD",
+  "price": 259.99,
+  "cookingTime": 15000
+}]
