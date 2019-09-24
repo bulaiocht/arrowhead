@@ -24,14 +24,15 @@ public class Chef  {
     private Chef(){
         this.orders=new ArrayList<>();
         this.queue = new PriorityQueue<>();
+        this.run1 = new ChefThread();
+        this.run2 = new ChefThread();
+        this.run3 = new ChefThread();
 
 
     }
     public static Chef getInstance(){
         if(chef==null)
             chef = new Chef();
-
-
 
         return chef;
     }
@@ -46,7 +47,6 @@ public class Chef  {
         if (orders.size()==3){
             queue.add(order);
         }else{
-            System.out.println("123");
             orders.add(order);
         }
 
@@ -54,7 +54,6 @@ public class Chef  {
     private void goToListWithQuery(){
 
         if(orders.size()<3&&!queue.isEmpty()){
-            System.out.println("231");
             orders.add(queue.poll());
 
         }
@@ -64,29 +63,39 @@ public class Chef  {
     private void cooking(){
 
         while (true){
+
+            START:{
             if(!orders.isEmpty()) {
 
                 Order order = orders.get(0);
-                if (!run1.isAlive()){
+                if (run1.isAlive()==false){
+
                     run1 = new ChefThread(order);
                     run1.start();
                     orders.remove(0);
                     goToListWithQuery();
-
+                    break START;
                 }else if (!run2.isAlive()){
                     run2 = new ChefThread(order);
                     run2.start();
                     orders.remove(0);
                     goToListWithQuery();
+                    break START;
                 }else if (!run3.isAlive()){
                     run3 = new ChefThread(order);
                     run3.start();
                     orders.remove(0);
                     goToListWithQuery();
+                    break START;
                 }
 
 
+
+
+            }else {
+                break ;
             }
+        }
 
         }
 

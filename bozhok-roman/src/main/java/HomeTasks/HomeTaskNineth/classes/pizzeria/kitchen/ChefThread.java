@@ -10,15 +10,14 @@ import java.util.Queue;
 
 public class ChefThread extends Thread {
 
-    private volatile List<Order> orders;
-    private Queue<Order> queue;
+
     private Order order;
+
+    public ChefThread(){}
 
     public ChefThread (Order order){
 
-        this.orders = new ArrayList<>();
-        this.queue = new PriorityQueue<>();
-
+        this.order=order;
 
     }
 
@@ -31,7 +30,7 @@ public class ChefThread extends Thread {
                 int count = pizzaList.size();
                 for (Pizza pizza : pizzaList) {
                     try {
-                        sleep(pizza.getTime_cooking()*6000 );
+                        sleep(pizza.getTime_cooking()*1000 );
                         pizza.setIs_cooked(true);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
