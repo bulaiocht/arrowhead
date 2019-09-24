@@ -12,7 +12,7 @@ public class Services {
     private static final Scanner scanner = new Scanner(System.in);
     private static final List<Pizza> pizzas = PizzaProperty.pizzas;
     private static int id_customer = 0;
-    private static final Chef CHEF = new Chef();
+    private static final Chef CHEF = Chef.getInstance();
     private static Map<Integer,Order> query = new HashMap<>();
     private static void printerMenu (){
         for (Pizza pizza : pizzas) {
@@ -54,7 +54,7 @@ public class Services {
             break;
         }
         }
-        new Sales(order);
+//        new Sales(order);
         System.out.println("Price for Order: "+ order.getPriceForOrder()+"$");
         scanner.nextInt();
         CHEF.setOrder(order);
