@@ -33,8 +33,8 @@ public class Sales {
     // скидка каждая 3 пицца бесплатно
     private void salesThree(Order order){
         int size = order.getPizzaList().size()/3;
-        for (int i = 1; i<=size ; i++) {
-            order.getPizzaList().get(i*3).setPrice(0);
+        for (int i = 0; i<size ; i++) {
+            order.getPizzaList().get(i+2).setPrice(0);
         }
     }
 }

@@ -68,7 +68,7 @@ public class Chef  {
             if(!orders.isEmpty()) {
 
                 Order order = orders.get(0);
-                if (run1.isAlive()==false){
+                if (!run1.isAlive()){
 
                     run1 = new ChefThread(order);
                     run1.start();

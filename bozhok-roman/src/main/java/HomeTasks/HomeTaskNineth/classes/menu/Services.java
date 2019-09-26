@@ -54,7 +54,7 @@ public class Services {
             break;
         }
         }
-//        new Sales(order);
+        new Sales(order);
         System.out.println("Price for Order: "+ order.getPriceForOrder()+"$");
         scanner.nextInt();
         CHEF.setOrder(order);

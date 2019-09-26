@@ -36,7 +36,7 @@ public class ChefThread extends Thread {
                         e.printStackTrace();
                     }
                 }
-                while (!order.isReady()) {
+
                     int countReady = 0;
                     for (Pizza pizza : pizzaList) {
                         if (pizza.isIs_cooked()) {
@@ -48,7 +48,7 @@ public class ChefThread extends Thread {
                         System.out.println("Customer: №" + order.getID() + " Vash order gotov!!!");
 
                     }
-                }
+
 
         }
 
