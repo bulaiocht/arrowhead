@@ -12,16 +12,21 @@ import java.util.Scanner;
 
 abstract class Client {
 
-    private Socket socket;
+    private static Socket socket;
     private final String EXIT = "Exit";
+    private String IP;
     private final Scanner scanner = new Scanner(System.in);
 
 
-    protected void getConnection(){
+    protected void getConnection(String IP){
+        this.IP = IP;
         try {
-             socket = new Socket(ServerConfig.IP,ServerConfig.PORT);
+             socket = new Socket();
+             socket.connect(new InetSocketAddress(IP,ServerConfig.PORT));
             try (BufferedWriter bf = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))){
-                bf.write(this.getClass().getName());
+                String name = this.getClass().getName();
+                String[] split = name.split("\\.");
+                bf.write(split[split.length-1]);
                 bf.flush();
             }catch (IOException e ){
                 e.printStackTrace();
@@ -32,12 +37,24 @@ abstract class Client {
 
         }
     }
+    protected void getConnection2(){
+        try {
+            socket = new Socket(IP,ServerConfig.PORT);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+    }
     protected String readUserInput(){
         String s = scanner.nextLine();
-        if (s.equalsIgnoreCase(EXIT)){
+        if (EXIT.equalsIgnoreCase(s)){
+
             try {
                 socket.close();
-                return socket.getInetAddress().getHostName()+"Client dead";
+                System.out.println(socket.getInetAddress().getHostName()+"Client dead");
+                System.exit(1);
+                return null;
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;
@@ -50,8 +67,10 @@ abstract class Client {
 
     protected void sendJsonMessage (){
         StringBuilder sb = new StringBuilder();
-        sb.append("{"+"\n");
         String userInput = readUserInput();
+        sb.append(userInput+"@");
+        userInput = readUserInput();
+        sb.append("{"+"\n");
         String[] field = userInput.split(",");
         for (String s : field) {
             String[] split = s.split("=");
@@ -68,9 +87,10 @@ abstract class Client {
         }
         sb.append("\n");
         sb.append("}");
-
+        getConnection2();
         try (BufferedWriter bf = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))){
                 bf.write(sb.toString());
+
                 bf.flush();
         }catch (IOException e ){
             e.printStackTrace();
@@ -80,18 +100,18 @@ abstract class Client {
     }
     protected void getMessage (){
         StringBuilder stringBuilder = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()))){
-            while (true) {
-                String line = br.readLine();
-                if (line==null){
-                    break;
-                }
-                stringBuilder.append(line);
+        String line = "";
+
+        getConnection2();
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+                line = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        System.out.println(stringBuilder.toString());
+
+            System.out.println(line);
+
+
     }
 
 
