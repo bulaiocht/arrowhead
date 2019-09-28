@@ -6,7 +6,7 @@ public class Max extends Client  {
 
         Max max = new Max();
         max.getConnection("127.0.0.5");
-        max.getMessage();
+        max.sendJsonMessage();
 
     }
 

@@ -6,7 +6,7 @@ public class Aliona extends Client {
 
         Aliona aliona = new Aliona();
         aliona.getConnection("127.0.0.3");
-        aliona.getMessage();
+        aliona.sendJsonMessage();
 
 
     }

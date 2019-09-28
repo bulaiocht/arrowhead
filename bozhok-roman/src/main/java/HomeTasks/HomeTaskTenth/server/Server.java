@@ -97,12 +97,14 @@ public class Server implements ServerConfig {
                         List<String> strings = pullMessage.get(clientName);
                         if (!strings.isEmpty() || strings != null) {
 
-                            for (String string : strings) {
-                                bufferedWriter.write(string);
-                                bufferedWriter.newLine();
+                                for (String string : strings) {
+                                    bufferedWriter.write(string);
+                                    bufferedWriter.newLine();
 
-                            }
-                            bufferedWriter.flush();
+
+                                }
+                                bufferedWriter.flush();
+
 
 
 
