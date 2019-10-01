@@ -45,6 +45,7 @@ public class ChatServer {
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
+                clientSocket.setKeepAlive(false);
 
                 String id = NameCreator.getRandomNickName();
                 ClientConnectionThread clientConnectionThread
