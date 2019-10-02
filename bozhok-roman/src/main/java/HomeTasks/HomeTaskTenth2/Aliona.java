@@ -3,6 +3,7 @@ package HomeTasks.HomeTaskTenth2;
 import java.io.IOException;
 
 public class Aliona extends Client{
+
     public static void main(String[] args) {
 
         try {
