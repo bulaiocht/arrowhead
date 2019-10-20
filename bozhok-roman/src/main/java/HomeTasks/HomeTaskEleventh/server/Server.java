@@ -1,7 +1,7 @@
 package HomeTasks.HomeTaskEleventh.server;
 
-import HomeTasks.HomeTaskEleventh.servlets.BasicServlet;
-import HomeTasks.HomeTaskEleventh.servlets.PostServlet;
+import HomeTasks.HomeTaskEleventh.servlets.GetAllUsersServlet;
+import HomeTasks.HomeTaskEleventh.servlets.LoginServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
@@ -19,12 +19,12 @@ public class Server {
         Context ctx = tomcat.addContext("/", new File(".").getAbsolutePath());
 
 
-        String name = PostServlet.class.getName();
+        String name = LoginServlet.class.getName();
 
         tomcat.addServlet(ctx,name,name);
 
-        ctx.addServletMapping("/",name);
-        name = BasicServlet.class.getName();
+        ctx.addServletMapping("/login",name);
+        name = GetAllUsersServlet.class.getName();
 
         tomcat.addServlet(ctx,name,name);
 
