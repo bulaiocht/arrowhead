@@ -1,8 +1,5 @@
 package generics;
 
-import sun.misc.Unsafe;
-
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
