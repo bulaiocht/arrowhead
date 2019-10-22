@@ -1,11 +1,23 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+    <welcome-file-list>
+        <welcome-file>simple.html</welcome-file>
+    </welcome-file-list>
+
     <servlet>
         <servlet-name>CookieServlet</servlet-name>
         <servlet-class>web.servlet.CookiesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BasicServlet</servlet-name>
+        <servlet-class>web.servlet.BasicServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>CookieServlet</servlet-name>
         <url-pattern>/cookie</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BasicServlet</servlet-name>
+        <url-pattern>/api</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -39,6 +39,11 @@ public class ServerRunner {
                     "SECOND_NAME VARCHAR(250)," +
                     "ADDRESS VARCHAR(250));");
 
+
+
+            new java.sql.Date(System.currentTimeMillis());
+
+
             String insertSql = "INSERT INTO USER(NAME, SECOND_NAME, ADDRESS) VALUES ( ?, ?, ? );";
 
             PreparedStatement preparedStatement =

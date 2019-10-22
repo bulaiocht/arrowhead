@@ -16,8 +16,8 @@ public class ServletExample {
     public static void main(String[] args) throws LifecycleException, ServletException {
 
         String contextPath = "";
-        String appBase = new File("src/main/java/web").getAbsolutePath();
-        String docBase = new File("src/main/webapp").getAbsolutePath();
+        String appBase = new File("examples/src/main/java/web").getAbsolutePath();
+        String docBase = new File("examples/src/main/webapp").getAbsolutePath();
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(8080);
 
