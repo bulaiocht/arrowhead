@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+//    id 'war'
 }
 
 group 'ua.ithillel'
@@ -11,8 +12,42 @@ repositories {
     mavenCentral()
 }
 
+//war {
+//    archiveFileName = 'examples.war'
+//}
+
+jar {
+    manifest {
+        attributes "Main-Class": "web.servlet.ServletExample"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+def tomVer = '8.5.2'
+def slf4jVer = '1.7.28'
+
 dependencies {
+    implementation "org.apache.tomcat.embed:tomcat-embed-core:$tomVer"
+    implementation "org.apache.tomcat.embed:tomcat-embed-jasper:$tomVer"
+    implementation "org.apache.tomcat.embed:tomcat-embed-logging-juli:$tomVer"
+//    implementation "org.apache.tomcat:tomcat-jasper:$tomVer"
+//    implementation "org.apache.tomcat:tomcat-jasper-el:$tomVer"
+//    implementation "org.apache.tomcat:tomcat-jsp-api:$tomVer"
+
+    implementation "org.slf4j:slf4j-api:$slf4jVer"
+    implementation "org.slf4j:slf4j-simple:$slf4jVer"
+
+    implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
+    implementation 'com.zaxxer:HikariCP:3.4.1'
+    implementation 'mysql:mysql-connector-java:8.0.17'
+    implementation 'com.h2database:h2:1.4.199'
+    implementation 'cglib:cglib:3.3.0'
     implementation 'org.slf4j:slf4j-simple:1.7.26'
+    implementation 'org.apache.commons:commons-lang3:3.9'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.assertj:assertj-core:3.12.2'
 }
