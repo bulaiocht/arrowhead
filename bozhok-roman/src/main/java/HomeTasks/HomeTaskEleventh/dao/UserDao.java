@@ -2,14 +2,19 @@ package HomeTasks.HomeTaskEleventh.dao;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserDao extends Dao<User,String>{
+    @Override
+    void creatTable();
 
-    void creatTableUser ();
+    @Override
+    void insert(User user);
 
-    void insertUser(User user);
+    @Override
+    List<User> selectAll();
 
-    List<User> selectAllUser();
+    @Override
+    boolean selectType1WhereHaveType2(String s);
 
-    boolean isUserByEmailPresent(String email);
+
 
 }
