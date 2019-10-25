@@ -19,10 +19,11 @@ public class UserDaoInit implements UserDao {
     @Override
     public void creatTable() {
         Connection connection = CONNECTION_MANAGER.getConnection();
+        Statement statement = null;
         try {
 
 
-            Statement statement = connection.createStatement();
+            statement = connection.createStatement();
 
             statement.execute("CREATE TABLE IF NOT EXISTS USER(" +
                     "ID INT PRIMARY KEY AUTO_INCREMENT," +
@@ -32,19 +33,27 @@ public class UserDaoInit implements UserDao {
                     "EMAIL VARCHAR(55)," +
                     "PASSWORD VARCHAR(44));");
 
-            statement.close();
-            connection.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                statement.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
     @Override
     public void insert(User user) {
         Connection connection = CONNECTION_MANAGER.getConnection();
+        PreparedStatement preparedStatement = null;
         try {
 
-            PreparedStatement preparedStatement =
+            preparedStatement =
                     connection.prepareStatement("INSERT INTO USER(" +
                             "FIRST_NAME, " +
                             "SECOND_NAME," +
@@ -62,20 +71,28 @@ public class UserDaoInit implements UserDao {
 
             preparedStatement.execute();
 
-            preparedStatement.close();
-            connection.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+
+            try {
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @Override
     public List<User> selectAll() {
         Connection connection = CONNECTION_MANAGER.getConnection();
+        Statement statement = null;
         List<User> users = new ArrayList<>();
         try {
 
-            Statement statement =
+            statement =
                     connection.createStatement();
              ResultSet resultSet =
                      statement.executeQuery("SELECT * FROM USER");
@@ -91,10 +108,17 @@ public class UserDaoInit implements UserDao {
                   users.add(user);
 
              }
-            statement.close();
-            connection.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                statement.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
         }
         return users;
     }

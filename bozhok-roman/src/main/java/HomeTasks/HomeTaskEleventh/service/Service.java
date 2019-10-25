@@ -73,6 +73,7 @@ public class Service {
     }
 
     public static void insertUser (User user){
+
         USER_DAO_INIT.insert(user);
     }
 }

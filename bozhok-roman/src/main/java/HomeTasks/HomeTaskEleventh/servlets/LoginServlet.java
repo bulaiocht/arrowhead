@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import static HomeTasks.HomeTaskEleventh.service.Service.getUserForReq;
 
@@ -23,7 +22,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        PrintWriter writer = resp.getWriter();
+
         try {
             User user = getUserForReq(req);
             Service.insertUser(user);
@@ -38,7 +37,7 @@ public class LoginServlet extends HttpServlet {
         }finally {
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
 
-            writer.close();
+
         }
 
 
