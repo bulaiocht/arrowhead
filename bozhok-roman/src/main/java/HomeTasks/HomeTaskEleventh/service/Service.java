@@ -17,22 +17,17 @@ public class Service {
 
 
     public static String getJSONResponse (){
-        StringBuilder sb = new StringBuilder();
+
         List<User> userList = USER_DAO_INIT.selectAll();
         ObjectMapper objectMapper = new ObjectMapper();
-        sb.append("[");
-        userList.forEach(user -> {
-            try {
-                sb.append(objectMapper.writeValueAsString(user));
-                sb.append(",");
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-        });
-        sb.deleteCharAt(sb.lastIndexOf(","));
-        sb.append("]");
 
-        return sb.toString();
+
+        try {
+            return objectMapper.writeValueAsString(userList);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
 
     }
     public static int validAge (String age){
