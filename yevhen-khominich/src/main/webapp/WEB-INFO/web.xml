@@ -1,0 +1,11 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+
+<servlet>
+    <servlet-name>BasicServlet</servlet-name>
+    <servlet-class>HomeTasks.SimpleRegistration.servlet.BasicServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>BasicServlet</servlet-name>
+    <url-pattern>/api</url-pattern>
+</servlet-mapping>
+</web-app>
