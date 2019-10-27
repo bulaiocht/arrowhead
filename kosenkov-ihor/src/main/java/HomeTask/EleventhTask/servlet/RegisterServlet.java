@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ResourceBundle;
 
 @WebServlet(
         name = "registerServlet",
@@ -18,7 +19,17 @@ import java.io.PrintWriter;
 )
 public class RegisterServlet extends HttpServlet {
 
-    Service service = new Service();
+    private static final int MIN_AGE = 18;
+    public static final String HTML_PAGE = "html_page";
+    private Service service = new Service();
+    private String htmlPage;
+
+
+    {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(HTML_PAGE);
+        htmlPage = resourceBundle.getString("page");
+    }
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
         if (email!=null && !Utilities.isValidEmail(email)) {
             writeForm(writer, ErrorMessage.INVALID_EMAIL);
         }
-        if (age != null && Integer.parseInt(age) < 18) {
+        if (age != null && Integer.parseInt(age) < MIN_AGE) {
             writeForm(writer, ErrorMessage.INVALID_AGE);
         }
         if (email!=null && service.isEmailAlreadyExists(email)) {
@@ -50,11 +61,11 @@ public class RegisterServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        if(!Utilities.isValidEmail(email) || Integer.parseInt(age) < 18 || service.isEmailAlreadyExists(email)){
+        if(!Utilities.isValidEmail(email) || Integer.parseInt(age) < MIN_AGE || service.isEmailAlreadyExists(email)){
             doGet(req, resp);
         }
 
-        if (Utilities.isValidEmail(email) && Integer.parseInt(age) >= 18 && !service.isEmailAlreadyExists(email)) {
+        if (Utilities.isValidEmail(email) && Integer.parseInt(age) >= MIN_AGE && !service.isEmailAlreadyExists(email)) {
             service.saveIntoDB(firstName, lastName, age, email, password);
             writer.println("<h2>Successful registration!</h2>");
             writer.flush();
@@ -64,35 +75,7 @@ public class RegisterServlet extends HttpServlet {
     }
     //TODO вынести в проперти
     private void writeForm(PrintWriter writer, ErrorMessage errorMessage) {
-        String message = String.format("<!DOCTYPE html>\n" +
-                "<html>\n" +
-                "<body>\n" +
-                "\n" +
-                "<h2>Register Forms</h2>\n" +
-                "\n" +
-                "<form method=\"POST\">\n" +
-                "  First name:<br>\n" +
-                "  <input type=\"text\" name=\"first_name\" value=\"Billy\">\n" +
-                "  <br>\n" +
-                "  Last name:<br>\n" +
-                "  <input type=\"text\" name=\"last_name\" value=\"Bob\">\n" +
-                "  <br>\n" +
-                "  Age:<br>\n" +
-                "  <input type=\"text\" name=\"age\" value=\"18\">\n" +
-                "  <br>\n" +
-                "  Email:<br>\n" +
-                "  <input type=\"text\" name=\"email\" value=\"billybob18@email.com\">\n" +
-                "  <br>\n" +
-                "  Password:<br>\n" +
-                "  <input type=\"password\" name=\"password\" value=\"\">\n" +
-                "  <br><br>\n" +
-                "  <input type=\"submit\" value=\"Submit\">\n" +
-                "  <br><br>" +
-                "  <font style=\"color:red\">%s</font>" +
-                "</form> \n" +
-                "\n" +
-                "</body>\n" +
-                "</html>", errorMessage.getMessage());
+        String message = String.format(htmlPage, errorMessage.getMessage());
         writer.println(message);
 
 

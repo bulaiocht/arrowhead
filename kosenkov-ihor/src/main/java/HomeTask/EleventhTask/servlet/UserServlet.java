@@ -16,11 +16,12 @@ import java.io.PrintWriter;
 )
 public class UserServlet extends HttpServlet {
 
+    public static final String APPLICATION_JSON = "application/json";
     Service service = new Service();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("application/json");
+        resp.setContentType(APPLICATION_JSON);
         PrintWriter writer = resp.getWriter();
         String userJson = service.getUserJson();
         writer.write(userJson);
