@@ -1,13 +1,10 @@
 import basics.PrimitiveExample;
 import org.assertj.core.api.Assertions;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNot.not;
-import static org.junit.Assert.assertThat;
 
 public class PrimitiveTest {
 
@@ -15,7 +12,7 @@ public class PrimitiveTest {
 
     private static PrimitiveExample example;
 
-    @BeforeClass
+    @BeforeAll
     public static void init() {
         example = new PrimitiveExample();
     }
@@ -69,8 +66,6 @@ public class PrimitiveTest {
         log.info("0.1: {}", Long.toBinaryString(Double.doubleToRawLongBits(d1)));
         log.info("0.2: {}", Long.toBinaryString(Double.doubleToRawLongBits(d2)));
         log.info("0.3: {}", Long.toBinaryString(Double.doubleToRawLongBits(d3)));
-
-        assertThat(d3, is(not(d1 + d2)));
 
         Assertions.assertThat(d3).isNotEqualTo(d1 + d2);
 

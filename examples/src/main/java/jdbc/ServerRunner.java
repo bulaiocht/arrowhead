@@ -64,7 +64,7 @@ public class ServerRunner {
             ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
 
             while (generatedKeys.next()) {
-                long id = generatedKeys.getLong(1);
+                long id = generatedKeys.getLong("ID");
                 System.out.println("User id: " + id);
             }
 

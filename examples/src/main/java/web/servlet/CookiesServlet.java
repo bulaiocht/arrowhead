@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Date;
+import java.util.Map;
 
 @WebServlet(
         name = "CookiesServlet",
@@ -23,7 +24,7 @@ public class CookiesServlet extends HttpServlet {
             = LoggerFactory.getLogger(CookiesServlet.class);
 
     @Override
-    protected void doGet(HttpServletRequest req,
+    public void doGet(HttpServletRequest req,
                          HttpServletResponse resp) throws ServletException, IOException {
 
         Cookie[] cookies = req.getCookies();
@@ -35,6 +36,10 @@ public class CookiesServlet extends HttpServlet {
                 }
             }
         }
+
+        Map<String, String[]> parameterMap = req.getParameterMap();
+
+
 
         String dateString = Instant.now().toString();
         log.info("Setting new date: {}", dateString);

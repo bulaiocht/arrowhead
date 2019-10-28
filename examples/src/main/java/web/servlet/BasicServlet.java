@@ -126,6 +126,8 @@ public class BasicServlet extends HttpServlet {
                     }
                 });
 
+        resp.sendError(400, "Image is too large!");
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/simple.html");
         requestDispatcher.forward(req, resp);
 
