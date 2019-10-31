@@ -1,6 +1,7 @@
 package HomeTasks.HomeTaskEleventh.servlets;
 
 
+import HomeTasks.HomeTaskEleventh.dao.UserDaoInit;
 import HomeTasks.HomeTaskEleventh.service.Service;
 
 import javax.servlet.ServletException;
@@ -18,6 +19,7 @@ import java.io.PrintWriter;
 public class GetAllUsersServlet extends HttpServlet {
     private static final String CONTENT_TYPE = "application/json";
     private static final String CHARACTER_ENCODING ="UTF-8";
+    private static final Service service = new Service(new UserDaoInit());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

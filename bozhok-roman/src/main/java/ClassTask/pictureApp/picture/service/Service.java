@@ -29,7 +29,6 @@ public class Service {
         objectMapper.setDateFormat(dF);
 
 
-
             List<PictureDto> pictureDtos = pictDao.selectAll();
             pictureDtos.forEach(pictureDto -> System.out.println(pictureDto.toString()));
             try {
@@ -48,7 +47,7 @@ public class Service {
 
         InputStream inputStream = pictDao.selectByID(Long.parseLong(id));
 
-            return inputStream;
+        return inputStream;
 
     }
     public static void parts (Collection<Part> parts, String fileName){
@@ -69,7 +68,8 @@ public class Service {
 
                     Picture picture = Picture.newBuilder()
                             .setFileName(fileName)
-                            .setData(part.getInputStream()).build();
+                            .setData(part.getInputStream())
+                            .build();
 
                     pictDao.insert(picture);
                 } catch (IOException e) {

@@ -1,6 +1,7 @@
 package HomeTasks.HomeTaskEleventh.service;
 
 import HomeTasks.HomeTaskEleventh.dao.User;
+import HomeTasks.HomeTaskEleventh.dao.UserDao;
 import HomeTasks.HomeTaskEleventh.dao.UserDaoInit;
 import HomeTasks.HomeTaskEleventh.propertyLoader.PropertyLoader;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -13,7 +14,13 @@ import java.util.regex.Pattern;
 
 public class Service {
 
-    private static final UserDaoInit USER_DAO_INIT = new UserDaoInit();
+    private static UserDao USER_DAO_INIT;
+
+    public Service (UserDao userDao){
+
+        this.USER_DAO_INIT = userDao;
+    }
+
 
 
     public static String getJSONResponse (){
@@ -30,7 +37,7 @@ public class Service {
         }
 
     }
-    public static int validAge (String age){
+    private static int validAge (String age){
         try {
             int i = Integer.parseInt(age);
             return i;
@@ -38,7 +45,7 @@ public class Service {
             throw new IllegalArgumentException("Invalid age");
         }
     }
-    public static String validEmail(String email){
+    private static String validEmail(String email){
         Pattern pattern1 = Pattern
                 .compile(PropertyLoader.REGEX_EMAIL
                         ,Pattern.CASE_INSENSITIVE);

@@ -109,9 +109,6 @@ public class PictDaoImpl implements PictDao{
             }
 
 
-
-
-
             return image.getBinaryStream();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package HomeTasks.HomeTaskEleventh.servlets;
 
 import HomeTasks.HomeTaskEleventh.dao.User;
+import HomeTasks.HomeTaskEleventh.dao.UserDaoInit;
 import HomeTasks.HomeTaskEleventh.service.Service;
 
 import javax.servlet.ServletException;
@@ -17,7 +18,7 @@ import static HomeTasks.HomeTaskEleventh.service.Service.getUserForReq;
         urlPatterns = {"/login"}
 )
 public class LoginServlet extends HttpServlet {
-
+    private static final Service service = new Service(new UserDaoInit());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
