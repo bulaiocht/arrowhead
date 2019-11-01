@@ -1,12 +1,8 @@
 package HomeTasks.HomeTaskNineth.classes.pizzeria.kitchen;
 
 import HomeTasks.HomeTaskNineth.classes.pizzeria.hall.Order;
-import com.sun.org.apache.xpath.internal.operations.Or;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class ChefThread extends Thread {
 

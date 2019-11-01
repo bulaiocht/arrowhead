@@ -1,12 +1,31 @@
 package HomeTasks.HomeTaskEleventh.dao;
 
 
+import java.util.Objects;
+
 public class User {
     private String firstName;
     private String secondName;
     private int age;
     private String email;
     private String password;
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        final User user = (User) o;
+        return age == user.age &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(secondName, user.secondName) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(password, user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, secondName, age, email, password);
+    }
 
     @Override
     public String toString() {

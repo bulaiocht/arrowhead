@@ -15,6 +15,23 @@ public class UserDaoInit implements UserDao {
     private static final ConnectionManager CONNECTION_MANAGER =
             ConnectionManagerFactory.getH2ConnectionManager();
 
+    private static final String CREATE_USER_TABLE_SQL =
+            "CREATE TABLE IF NOT EXISTS USER(" +
+            "ID INT PRIMARY KEY AUTO_INCREMENT," +
+            "FIRST_NAME VARCHAR(45)," +
+            "SECOND_NAME VARCHAR(45)," +
+            "AGE INT," +
+            "EMAIL VARCHAR(55)," +
+            "PASSWORD VARCHAR(44));";
+
+    private static final String INSERT_USER_SQL = "INSERT INTO USER(" +
+            "FIRST_NAME, " +
+            "SECOND_NAME," +
+            "AGE, " +
+            "EMAIL," +
+            "PASSWORD) " +
+            "VALUES (?,?,?,?,?);";
+
 
     @Override
     public void creatTable() {
@@ -22,24 +39,20 @@ public class UserDaoInit implements UserDao {
         Statement statement = null;
         try {
 
-
             statement = connection.createStatement();
 
-            statement.execute("CREATE TABLE IF NOT EXISTS USER(" +
-                    "ID INT PRIMARY KEY AUTO_INCREMENT," +
-                    "FIRST_NAME VARCHAR(45)," +
-                    "SECOND_NAME VARCHAR(45)," +
-                    "AGE INT," +
-                    "EMAIL VARCHAR(55)," +
-                    "PASSWORD VARCHAR(44));");
-
+            statement.execute(CREATE_USER_TABLE_SQL);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
             try {
-                statement.close();
+
+                if (statement != null) {
+                    statement.close();
+                }
                 connection.close();
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -54,13 +67,7 @@ public class UserDaoInit implements UserDao {
         try {
 
             preparedStatement =
-                    connection.prepareStatement("INSERT INTO USER(" +
-                            "FIRST_NAME, " +
-                            "SECOND_NAME," +
-                            "AGE, " +
-                            "EMAIL," +
-                            "PASSWORD) " +
-                            "VALUES (?,?,?,?,?);");
+                    connection.prepareStatement(INSERT_USER_SQL);
 
             preparedStatement.setString(1,user.getFirstName());
             preparedStatement.setString(2,user.getSecondName());
@@ -77,7 +84,9 @@ public class UserDaoInit implements UserDao {
         }finally {
 
             try {
-                preparedStatement.close();
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
                 connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -113,7 +122,9 @@ public class UserDaoInit implements UserDao {
             e.printStackTrace();
         }finally {
             try {
-                statement.close();
+                if (statement != null) {
+                    statement.close();
+                }
                 connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -135,15 +146,17 @@ public class UserDaoInit implements UserDao {
 
             preparedStatement.setString(1,email);
             ResultSet resultSet = preparedStatement.executeQuery();
-            
+
             return resultSet.next();
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }finally {
             try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
                 connection.close();
-                preparedStatement.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

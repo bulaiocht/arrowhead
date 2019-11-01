@@ -26,9 +26,6 @@ public class PicsServlet extends HttpServlet {
 
         String id = req.getParameter("id");
 
-
-
-
         if (id==null){
             PrintWriter writer = resp.getWriter();
             resp.setContentType("application/json");

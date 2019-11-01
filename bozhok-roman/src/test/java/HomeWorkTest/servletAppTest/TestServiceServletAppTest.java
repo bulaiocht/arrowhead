@@ -24,11 +24,11 @@ public class TestServiceServletAppTest {
     private static String age_valid = "123";
     private static int age_valid_int = 123;
     private String age_invalid = "qwe";
-    private static String password = "123123" ;
+    private static String password = "123123";
 
-    private static HttpServletRequest request ;
+    private static HttpServletRequest request;
 
-    private static User user ;
+    private static User user;
 
     private static UserDao userDao;
 
@@ -36,7 +36,7 @@ public class TestServiceServletAppTest {
     private static ObjectMapper objectMapper;
 
     @BeforeAll
-    public static void init(){
+    static void init() {
         userDao = Mockito.mock(UserDao.class);
         request = Mockito.mock(HttpServletRequest.class);
         user = User.newBuilder()
@@ -62,30 +62,24 @@ public class TestServiceServletAppTest {
         Mockito.when(request.getParameter("age")).thenReturn(age_invalid);
 
         Assertions.assertThrows(IllegalArgumentException.class,
-                ()->Service.getUserForReq(request),"Invalid age");
+                () -> Service.getUserForReq(request), "Invalid age");
 
         Mockito.when(request.getParameter("age")).thenReturn(age_valid);
         Mockito.when(request.getParameter("email")).thenReturn(email_invalid);
 
         Assertions.assertThrows(IllegalArgumentException.class,
-                ()->Service.getUserForReq(request),"Invalid email");
+                () -> Service.getUserForReq(request), "Invalid email");
 
         Mockito.when(request.getParameter("age")).thenReturn(age_valid);
         Mockito.when(request.getParameter("email")).thenReturn(email_valid);
-        Assertions.assertEquals(Service.getUserForReq(request),user);
-
-
-
-
-
+        Assertions.assertEquals(Service.getUserForReq(request), user);
 
     }
 
     @Test
     void testGetJSON() throws JsonProcessingException {
         Mockito.when(userDao.selectAll()).thenReturn(users);
-        Assertions.assertEquals(Service.getJSONResponse(),objectMapper.writeValueAsString(users));
-
+        Assertions.assertEquals(Service.getJSONResponse(), objectMapper.writeValueAsString(users));
 
 
     }

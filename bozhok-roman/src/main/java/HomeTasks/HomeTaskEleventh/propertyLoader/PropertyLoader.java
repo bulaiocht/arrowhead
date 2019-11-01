@@ -1,58 +1,42 @@
 package HomeTasks.HomeTaskEleventh.propertyLoader;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public abstract class PropertyLoader {
-    public static final Properties CONFIG_APP = loaderConfigApp();
-    public static final Properties SERVER_CONFIG = loaderServerConfig();
-    public static final String REGEX_EMAIL = CONFIG_APP.getProperty("regexEmail");
-    public static final String APP_BASE = SERVER_CONFIG.getProperty("appBase");
-    public static final String DOC_BASE = SERVER_CONFIG.getProperty("docBase");
-    public static final String CONTEXT_PATH = SERVER_CONFIG.getProperty("contextPath");
-    public static final int PORT = Integer.parseInt(SERVER_CONFIG.getProperty("port"));
-    private static Properties loaderConfigApp (){
+
+    private static Properties CONFIG_APP;
+    private static Properties SERVER_CONFIG;
+
+    static {
         try {
-            FileInputStream in = new FileInputStream(
-                    String.format("bozhok-roman" +
-                                    "%ssrc" +
-                                    "%smain" +
-                                    "%sresources" +
-                                    "%sconfigurationServletApp" +
-                                    "%sconfigServlApp.properties",
-                            File.separator,
-                            File.separator,
-                            File.separator,
-                            File.separator,
-                            File.separator));
+            Path appConfigPath = Paths.get("src", "main", "resources",
+                    "configurationServletApp", "configServlApp.properties");
+            InputStream appConfIs = Files.newInputStream(appConfigPath);
             Properties properties = new Properties();
-            properties.load(in);
-            return properties;
+            properties.load(appConfIs);
+            CONFIG_APP = properties;
+
+            Path serverConfigPath = Paths.get("src", "main", "resources",
+                    "configurationServletApp", "serverConfig.properties");
+            InputStream servConfIs = Files.newInputStream(serverConfigPath);
+            Properties serverConfigProperties = new Properties();
+            serverConfigProperties.load(servConfIs);
+            SERVER_CONFIG = serverConfigProperties;
+
         } catch (IOException e) {
-            return null;
+            throw new IllegalStateException("No configuration found", e);
         }
     }
-    private static Properties loaderServerConfig (){
-        try {
-            FileInputStream in = new FileInputStream(
-                    String.format("bozhok-roman" +
-                                    "%ssrc" +
-                                    "%smain" +
-                                    "%sresources" +
-                                    "%sconfigurationServletApp" +
-                                    "%sserverConfig.properties",
-                            File.separator,
-                            File.separator,
-                            File.separator,
-                            File.separator,
-                            File.separator));
-            Properties properties = new Properties();
-            properties.load(in);
-            return properties;
-        } catch (IOException e) {
-            return null;
-        }
-    }
+
+    public static int PORT = Integer.parseInt(SERVER_CONFIG.getProperty("port"));
+    public static String REGEX_EMAIL = CONFIG_APP.getProperty("regexEmail");
+    public static String APP_BASE = SERVER_CONFIG.getProperty("appBase");
+    public static String DOC_BASE = SERVER_CONFIG.getProperty("docBase");
+    public static String CONTEXT_PATH = SERVER_CONFIG.getProperty("contextPath");
+
 }
