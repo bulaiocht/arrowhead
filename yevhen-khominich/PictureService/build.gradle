@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'ua.ithillel'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+def tomVer = '8.5.2'
+def slf4jVer = '1.7.28'
+
+dependencies {
+
+    implementation "org.apache.tomcat.embed:tomcat-embed-core:$tomVer"
+    implementation "org.apache.tomcat.embed:tomcat-embed-jasper:$tomVer"
+    implementation "org.apache.tomcat.embed:tomcat-embed-logging-juli:$tomVer"
+//    implementation "org.apache.tomcat:tomcat-jasper:$tomVer"
+//    implementation "org.apache.tomcat:tomcat-jasper-el:$tomVer"
+//    implementation "org.apache.tomcat:tomcat-jsp-api:$tomVer"
+
+    implementation "org.slf4j:slf4j-api:$slf4jVer"
+    implementation "org.slf4j:slf4j-simple:$slf4jVer"
+
+    implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.6.1'
+// https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+
+    implementation 'com.zaxxer:HikariCP:3.4.1'
+    implementation 'mysql:mysql-connector-java:8.0.17'
+    implementation 'com.h2database:h2:1.4.199'
+    implementation 'cglib:cglib:3.3.0'
+    implementation 'org.slf4j:slf4j-simple:1.7.26'
+    implementation 'org.apache.commons:commons-lang3:3.9'
+   // testImplementation 'junit:junit:4.12'
+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '3.1.0'
+    testImplementation 'org.assertj:assertj-core:3.12.2'
+    // https://mvnrepository.com/artifact/org.mockito/mockito-core
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '3.1.0'
+
+}
+
+
+test {
+    useJUnitPlatform()
+}
+
