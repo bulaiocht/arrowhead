@@ -14,22 +14,25 @@ import java.util.List;
 
 public class UserService {
 
-    private static final DataSource h2 = DataSourceFactory.getH2();
-    private static final UserDao userDao = new UserDao(h2);
+    private UserDao userDao;
 
-    public static void initialize() {
+    public UserService( UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    public void initialize() {
         userDao.createTableUser();
     }
 
-    public static User saveUser(User user){
+    public User saveUser(User user){
        return userDao.create(user);
     }
 
-    public static boolean isUserWithEmail(String email){
+    public boolean isUserWithEmail(String email){
         return userDao.isUserWithEmailExist(email);
     }
 
-    public static List<User> getAll(){
+    public List<User> getAll(){
         return userDao.getAll();
     }
 

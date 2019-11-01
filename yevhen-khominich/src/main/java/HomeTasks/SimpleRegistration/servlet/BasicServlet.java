@@ -1,5 +1,6 @@
 package HomeTasks.SimpleRegistration.servlet;
 
+import HomeTasks.SimpleRegistration.DB.DAO.impl.UserDao;
 import HomeTasks.SimpleRegistration.entity.User;
 import HomeTasks.SimpleRegistration.service.UserService;
 import com.google.gson.Gson;
@@ -24,12 +25,13 @@ public class BasicServlet extends HttpServlet {
 
     private final static Logger log = LoggerFactory.getLogger(BasicServlet.class);
     private Gson gson = new Gson();
+    UserService userService = new UserService(new UserDao());
 
     @Override
     protected void doGet(HttpServletRequest req,
                          HttpServletResponse resp) throws ServletException, IOException {
 
-        final List<User> users = UserService.getAll();
+        final List<User> users = userService.getAll();
         final PrintWriter out = resp.getWriter();
 
         String responce = gson.toJson(users);
@@ -45,7 +47,7 @@ public class BasicServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (UserService.isUserWithEmail(req.getParameter("email"))) {
+        if (userService.isUserWithEmail(req.getParameter("email"))) {
             try {throw new IllegalArgumentException("Already exist");}
             catch (IllegalArgumentException e){
                 resp.getWriter().write("Email is already exist");
@@ -58,48 +60,12 @@ public class BasicServlet extends HttpServlet {
                 req.getParameter("password"),
                 Integer.parseInt(req.getParameter("age")));
 
-        UserService.saveUser(user);
+        userService.saveUser(user);
         resp.getWriter().write("User is saved successfully");
         req.getRequestDispatcher("menu.html").forward(req, resp);
 
     }
 
-
-//        long size = file.getSize();
-//        log.info("Size: {}", size);
-//
-//        try (InputStream inputStream = file.getInputStream()) {
-//
-//            Path tempFile = Files.createTempFile("img", ".jpg");
-//            Path path = tempFile.toAbsolutePath();
-//            log.info("Path: {}", path.toString());
-//
-//            FileOutputStream fos = new FileOutputStream(tempFile.toFile());
-//
-//            byte[] buff = new byte[1024];
-//
-//            while (true) {
-//                int read = inputStream.read(buff);
-//                if (read == -1) {
-//                    break;
-//                }
-//                fos.write(buff, 0, read);
-//            }
-//
-//            fos.close();
-//
-//
-//            System.out.println(contentType);
-
-
-//        String file_name = req.getParameter("fname");
-//       `String parameter = req.getParameter("file");
-//        String contextPath = req.getContextPath();
-//        System.out.println(contextPath);
-//        PrintWriter writer = resp.getWriter();
-//        writer.write(file_name+"\n");
-//        writer.flush();
-//        writer.close();
 }
 
 

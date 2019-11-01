@@ -39,7 +39,7 @@ public class Client {
     }
 
     public void go() {
-        System.out.println("Start work");
+        System.out.println("HomeTasks.SimpleRegistration.Start work");
     }
 
     private static void showView() {

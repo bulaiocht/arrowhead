@@ -1,5 +1,6 @@
 package HomeTasks.SimpleRegistration;
 
+import HomeTasks.SimpleRegistration.DB.DAO.impl.UserDao;
 import HomeTasks.SimpleRegistration.service.UserService;
 import HomeTasks.SimpleRegistration.servlet.BasicServlet;
 import org.apache.catalina.Context;
@@ -14,7 +15,7 @@ public class Start {
 
         String docBasePath = new File("yevhen-khominich/src/main/webapp").getAbsolutePath();
 
-        UserService.initialize();
+        new UserService(new UserDao()).initialize();
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(9095);
 

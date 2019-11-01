@@ -1,6 +1,7 @@
 package HomeTasks.SimpleRegistration.DB.DAO.impl;
 
 import HomeTasks.SimpleRegistration.DB.DAO.BasicUserDao;
+import HomeTasks.SimpleRegistration.DB.connection.DataSourceFactory;
 import HomeTasks.SimpleRegistration.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,13 +16,11 @@ public class UserDao implements BasicUserDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDao.class);
     private static final String MAIN_EXCEPTION_MESSAGE = "Exception occurred";
 
+    private DataSource dataSource;
 
-    private static DataSource dataSource;
-
-    public UserDao(final DataSource dataSource) {
-        this.dataSource = dataSource;
+    public UserDao() {
+        dataSource = DataSourceFactory.getH2();
     }
-
 
     @Override
     public User create(User user) {
@@ -66,28 +65,6 @@ public class UserDao implements BasicUserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        //     System.out.println(pst.getGeneratedKeys().getInt(1));
-
-//            final ResultSet generatedKeys = pst.getGeneratedKeys();
-//            System.out.println(generatedKeys.getInt(1));
-
-
-        //  ResultSet generatedKeys = pst.getGeneratedKeys();
-//
-//            while (rs.next()){
-//                users.add
-//                        (new User
-//                                (
-//                                rs.getString(1),
-//                                rs.getString(2),
-//                                rs.getString(4),
-//                                rs.getString(5),
-//                                rs.getInt(3)
-//                                )
-//                        );
-//            }
-
 
         return users;
     }
