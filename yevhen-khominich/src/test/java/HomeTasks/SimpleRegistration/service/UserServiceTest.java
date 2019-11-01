@@ -5,11 +5,11 @@ import HomeTasks.SimpleRegistration.DB.DAO.impl.UserDao;
 import HomeTasks.SimpleRegistration.entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class UserServiceTest {
 
@@ -20,12 +20,10 @@ public class UserServiceTest {
 
     @Test
     public void whenSaveUserReturnUser() {
-        User expected = user;
-        Mockito.when(mockUserDao.create(expected)).thenReturn(expected);
 
-        User actual = userService.saveUser(expected);
-
-        Assertions.assertEquals(expected, actual);
+        Mockito.when(mockUserDao.create(ArgumentMatchers.any())).thenReturn(user);
+        User actual = userService.saveUser(user);
+        Assertions.assertEquals(user, actual);
 
     }
 

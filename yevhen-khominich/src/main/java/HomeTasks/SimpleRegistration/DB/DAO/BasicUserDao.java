@@ -11,7 +11,7 @@ public interface BasicUserDao extends BasicDao<Long, User> {
     User create(User user);
 
     @Override
-    void create(List<User> list);
+    void saveAll(List<User> list);
 
     @Override
     User get(long id);

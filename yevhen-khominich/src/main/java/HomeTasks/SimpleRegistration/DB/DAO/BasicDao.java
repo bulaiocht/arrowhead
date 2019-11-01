@@ -6,7 +6,7 @@ public interface BasicDao<ID, T> {
 
     T create(T t); // C - create
 
-    void create(List<T> list); // C - create
+    void saveAll(List<T> list); // C - create
 
     T get(long id); //R - read
 
