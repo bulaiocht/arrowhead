@@ -4,9 +4,6 @@ import DB.DAO.BasicPictureDao;
 import DB.connection.DataSourceFactory;
 import DTO.PictureDTO;
 import entity.Picture;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.sql.DataSource;
 import java.io.InputStream;
 import java.sql.*;
@@ -15,7 +12,6 @@ import java.util.List;
 
 public class PictureDao implements BasicPictureDao {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PictureDao.class);
     private static final String MAIN_EXCEPTION_MESSAGE = "Exception occurred";
 
     private DataSource dataSource;

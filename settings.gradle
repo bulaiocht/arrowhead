@@ -9,4 +9,8 @@ include 'shloma-dima'
 include 'smolenkov-sergey'
 include 'yevhen-khominich'
 include 'EE'
+include 'PictureService'
+include 'yevhen-khominich:PictureService'
+findProject(':yevhen-khominich:PictureService')?.name = 'PictureService'
+include 'PictureService'
 
