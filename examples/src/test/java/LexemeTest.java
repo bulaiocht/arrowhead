@@ -17,7 +17,7 @@ public class LexemeTest {
     public void namingAndLiterals() {
 
         //This code will not be supported in Java SE 9+
-        String _ = "underscore";
+        String s_ = "underscore";
 
         int _a = 22;
 
